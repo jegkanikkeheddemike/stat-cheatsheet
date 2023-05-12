@@ -116,3 +116,33 @@ var(2*rnorm(k,MeanY,SdY)+2*rnorm(k,MeanX,SdX)+4)
 Standard Divination
 
 
+Linear Model:
+------------------------------------------------
+I en linear model af
+```{r}
+lm(X ~ Y)
+```
+
+Gælder det at:
+X er dependent variable
+Y er explanatory variable
+
+Beta_0 er (Intecept) estimate
+Beta_1 er Y estimate
+sigma er residual standard error.
+
+
+Predictions ved x_0 udregnes som:
+```{r}
+sxx <- (n-1) * var(Y)
+t_alpha <- qt(0.9, df=n-2)
+beta_0 + beta_1 * x_0 + c(-1,1) * t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/ sxx))
+```
+
+
+
+
+
+
+
+
