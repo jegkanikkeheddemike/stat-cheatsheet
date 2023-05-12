@@ -138,6 +138,7 @@ chisq.test(M)
 ## One way Anova
 
 ## Two way Anova
+
 Find the expected value of group1 at treat n
 
 ```{r}
@@ -152,9 +153,8 @@ OverallAverage+(TreatAverage-OverallAverage)+(GroupAverage-OverallAverage)
 
 ```
 
+Confidence interval, for the difference in mean valuw from group1 and group2 pre-planned 95% confidence interval
 
-Confidence interval, for the difference in mean valuw from group1 and group2
-pre-planned 95% confidence interval
 ```{r}
 TotalNumberOfSamples <- 16
 NumberOfTreat <- 8
@@ -181,7 +181,7 @@ qt
 
 ```
 
-pvalue, given a data set
+#### pvalue, given a data set
 
 ```{r}
 tab <- data.frame(clo=c(0.52,0.53,0.54,0.53,0.50,0.46,0.44,0.31,
@@ -193,10 +193,31 @@ anova(lm(clo ~temp,data=tab))
 
 ```
 
+#### Indlæsning af datasæt
 
+![Twoway anova data](twoway_anova_data.png)
 
+Givet et datasæt som i billeded kan dataen indlæses således
 
+```{r}
+crops <- matrix(c(
+  79, 80, 73, 83,
+  46, 48, 47, 52,
+  64, 63, 57, 66,
+  66, 68, 62, 68,
+  57, 60, 55, 58
+),ncol=4, byrow=TRUE)
+colnames(crops) <- c("2014","2015","2016", "2017")
+rownames(crops) <- c("Crop 1","Crop 2","Crop 3","Crop 4","Crop 5")
+crops
 
+# Der kan derefter laves en qchisqetst
+
+chisq.test(crops)
+```
+
+\
+\
 
 ## Exponential
 
