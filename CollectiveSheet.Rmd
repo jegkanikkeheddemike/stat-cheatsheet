@@ -375,6 +375,20 @@ anova(lm(clo ~temp,data=tab))
 
 ## Exponential
 
+### Find median ved givet mean
+
+Der er helt sikkert en bedre måde at gøre det her, men det kan løses med simulation.
+
+```{r}
+mean <- 2.7017
+
+n <- 1000
+k <- 1000
+data <- replicate(k,rexp(n,rate = 1/mean))
+medians <- apply(data,2,median)
+mean(medians)
+```
+
 ## Simulation af sandsynlighed
 
 Givet en normalfordeling, hvad er sandsynligheden for at et tal er over x?
@@ -801,3 +815,13 @@ quantile(data,0.8,type=2)
 ```
 
 Her tages der 80% kvantil
+
+### Inter quantile range
+
+Inter quantile range defineres som Q3 - Q1
+
+## Variation
+
+### Coefficient of variation
+
+Definitionen på ciefficient of variation er sd/mean
