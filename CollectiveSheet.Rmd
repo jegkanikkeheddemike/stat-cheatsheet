@@ -254,9 +254,9 @@ colnames(crops) <- c("2014","2015","2016", "2017")
 rownames(crops) <- c("Crop 1","Crop 2","Crop 3","Crop 4","Crop 5")
 crops
 
-# Der kan derefter laves en qchisqetst
+# Der kan derefter laves en anova. Ved ikke helt hvordan tho :/
 
-chisq.test(crops)
+chisq.test(crops) ## DET HER ER FORKERT. VED IKKE HVORDAN MAN ELLERS SKAL GØRE :(
 ```
 
 \
@@ -307,7 +307,7 @@ NY = N(70,sqrt(125)²)
 Hvis der skal findes et confidensinterval i simulationen kan det findes ved
 
 ```{r}
-quantile(sort(data),c(0.025,0.975))
+quantile(sort(data),c(0.025,0.975),type=2)
 ```
 
 Hvor der i eksemplet bliver brugt alpha=0.05.
@@ -431,6 +431,17 @@ mean(x) + c(-1,1)* qt * sd(x)/sqrt(length(x))
 #or use t.test remember the conf-level
 t.test(x,conf.level=0.9)
 
+```
+
+#### Varians / sd
+
+For at regne et konfidensinterval af en varians af noget data skal der bruges:\
+
+```{r}
+my_df = 9
+qchisq(0.025,df=my_df)
+# og 
+qchisq(0.975, df=my_df)
 ```
 
 ## Linear Simulation
@@ -609,3 +620,14 @@ sxx <- (n-1) * var(Y)
 t_alpha <- qt(0.95, df=n-2) #alpha = 0.9
 beta_0 + beta_1 * x_0 + c(-1,1) * t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/ sxx))
 ```
+
+## Quantile
+
+DER SKAL ALTID BRUGES TYPE 2 QUANTILE I ALLE OPGAVER DET ER RET KLAMT!!
+
+```{r}
+data <- c(1,2,3)
+quantile(data,0.8,type=2)
+```
+
+Her tages der 80% kvantil
