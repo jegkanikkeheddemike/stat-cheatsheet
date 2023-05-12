@@ -1,9 +1,7 @@
-Collective sheet:
+# Collective cheatsheet
 
+## Binominal:
 
-
-Binominal:
---------------------------------------------------
 ```{r}
 numberOfItems <- 2
 success <- 0
@@ -18,11 +16,10 @@ prob <- 0.5
 pbinom(success,numberOfItems,prob)
 ```
 
+## Hyper
 
-
-Hyper
---------------------------------------------------
 Probability
+
 ```{r}
 Type1Drawn <- 1
 Type1All <- 2
@@ -37,6 +34,7 @@ dhyper(x=Type1Drawn, m=Type1All, n=Type2All, k=AllDrawn)
 ```
 
 Variance
+
 ```{r}
 
 #Calculate the variance given a probability (p) and number of participants (n)
@@ -48,48 +46,56 @@ n*p*(1-p)
 
 ```
 
+## Poisson
 
+## One way Anova
 
+## Two way Anova
 
+## Exponential
 
-Poisson
---------------------------------------------------
+## Simulation af sandsynlighed
 
+Givet en normalfordeling, hvad er sandsynligheden for at et tal er over x?
 
+Fks givet:\
+mean = 20, sd= 5
 
+Hvad er sansynligheden for at et givet tal er over 25?
 
+Dette kan gøres med simulation hvis man ikke kan huske formlen
 
+```{r}
+n <- 10000
+data <- rnorm(n,mean=20, sd=5)
+stor = function(x) {
+  x > 25
+}
+sum(sapply(data,stor)) / n
 
+```
 
+Her er stor en funktion som returnerer en boolean om tallet er større end 25. Ved at summe dem alle op tæller man hvor mange der er sande. Sandsynligheden er derfor antal sande / antal.
 
+### Sum af sandsynlighed
 
+Hvis der skal tages summen af to sandsynligheder, hvor de er normalfordelt kan man bare udregne den nye normalfordeling.
 
+Givet en normalfordelint X og Y hvor:
 
+X = N(20,5²)\
+Y = N(50,10²)
 
-One way Anova
---------------------------------------------------
+Kan den nye normalfordeling hvor der er 1. af hver være:
 
+NY = N(20+50, sqrt(5² + 10²)²)
 
-Two way Anova
---------------------------------------------------
+NY = N(70,sqrt(125)²)
 
+## Confidence interval
 
+Mean
 
-
-Exponential
---------------------------------------------------
-
-Normal
---------------------------------------------------
-
-
-
-
-
-
-Confidence interval
---------------------------------------------------
-Mean 
 ```{r}
 lower <- 2.26
 upper <- 5.26
@@ -100,12 +106,10 @@ upper <- 5.26
 
 ```
 
-
-Linear Simulation
---------------------------------------------------
-
+## Linear Simulation
 
 Variance
+
 ```{r}
 #Simulate to get variance, normal distribution
 #given 2*Y + 2*X + 4
@@ -125,7 +129,9 @@ z <- 2* Y + 2*X +4
 
 var(z)
 ```
+
 Standard Divination
+
 ```{r}
 #Simulate to get Standard Divination, normal distribution
 #given 2*Y^2 + X^3/3
@@ -146,12 +152,10 @@ z <- 2*Y^2 + X^3/3
 sd(z)
 ```
 
+## test statistic
 
-
-
-test statistic
---------------------------------------------------
 Calculate tobs
+
 ```{r}
 #Given n number of samples
 #Given the actual mean or something similar
@@ -174,40 +178,22 @@ standardError <- 5.867*10^4
 (actual - expected)/(standardError)
 ```
 
+## Linear Model:
 
-
-
-
-
-
-
-Linear Model:
-------------------------------------------------
 I en linear model af
+
 ```{r}
 lm(X ~ Y)
 ```
 
-Gælder det at:
-X er dependent variable
-Y er explanatory variable
+Gælder det at: X er dependent variable Y er explanatory variable
 
-Beta_0 er (Intecept) estimate
-Beta_1 er Y estimate
-sigma er residual standard error.
-
+Beta_0 er (Intecept) estimate Beta_1 er Y estimate sigma er residual standard error.
 
 Predictions ved x_0 udregnes som:
+
 ```{r}
 sxx <- (n-1) * var(Y)
 t_alpha <- qt(0.95, df=n-2) #alpha = 0.9
 beta_0 + beta_1 * x_0 + c(-1,1) * t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/ sxx))
 ```
-
-
-
-
-
-
-
-
