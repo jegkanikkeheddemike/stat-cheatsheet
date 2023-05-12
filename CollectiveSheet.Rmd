@@ -95,29 +95,9 @@ degreeFreedom <- 6
 
 ```
 
-![Proportion Confidence interval](PropConf.png){width="493"}
+![Proportion Confidence interval](PropConf.png)
 
-### Confidence interval (plus 2 method)
-
-Ved 2 forhold
-
-```{r}
-success <- 27
-fails <- 5
-
-new_success <- success + 2
-new_fails <- fails + 2
-
-new_total = new_success + new_fails
-
-proportion <- new_success / new_total
-
-
-
-
-```
-
-Ved n forhold:
+Confidence interval (plus 2 method)
 
 ```{r}
 #number of proportions
@@ -133,7 +113,10 @@ z <- qnorm(0.975)
 
 
 #Conf interval
-(n2)/(o2)+ c(-1,1)* z * sqrt(((n2/o2)-(1-(n2/o2)))/o2)
+(n)/(o)+ c(-1,1)* z * sqrt(((n/o)*(1-(n/o)))/o)
+
+#Conf interval plus 2
+(n2)/(o2)+ c(-1,1)* z * sqrt(((n2/o2)*(1-(n2/o2)))/o2)
 
 
 
@@ -424,6 +407,24 @@ x <- 140
 ```
 
 ## Confidence interval
+![Confidence interval for mean](OneSampleConf.png)
+```{r}
+#One sample confidence interval mean
+#number of observation in the sample
+n <-10
+mean <- 0
+alpha <- 0.5
+df <- n-1
+sd <- 5
+
+mean + c(-1,1)*qt((1-alpha/2),df = df ) * sd/sqrt(n)
+
+
+```
+
+
+
+
 
 Mean
 
