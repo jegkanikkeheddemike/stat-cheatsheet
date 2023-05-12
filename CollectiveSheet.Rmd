@@ -179,6 +179,25 @@ chisq.test(M)
 
 ```
 
+#### Indlæsning af datasæt
+
+![Chisq test. aka X\^2 test.](chisq-data.png){alt="Chisq test. aka X^2 test."}
+
+Givet et datasæt som i billeded kan dataen indlæses således
+
+```{r}
+scores <- matrix(c(
+  11, 27, 15, 
+  14, 40, 30, 
+  5, 23, 80
+),ncol=3)
+colnames(scores) <- c("Below","Average","Above")
+rownames(scores) <- c("Poor","Medium","Good")
+scores
+
+chisq.test(scores)
+```
+
 ## One way Anova
 
 Fobs for one-way anova
@@ -280,31 +299,6 @@ anova(lm(clo ~temp,data=tab))
 
 
 ```
-
-#### Indlæsning af datasæt
-
-![Twoway anova data](twoway_anova_data.png)
-
-Givet et datasæt som i billeded kan dataen indlæses således
-
-```{r}
-crops <- matrix(c(
-  79, 46, 64, 66, 57,
-  80, 48, 63, 68, 60,
-  73, 47, 57, 62, 55,
-  83, 52, 66, 68, 58
-),ncol=4)
-colnames(crops) <- c("2014","2015","2016", "2017")
-rownames(crops) <- c("Crop 1","Crop 2","Crop 3","Crop 4","Crop 5")
-crops
-
-# Der kan derefter laves en anova. Ved ikke helt hvordan tho :/
-
-chisq.test(crops) ## DET HER ER FORKERT. VED IKKE HVORDAN MAN ELLERS SKAL GØRE :(
-```
-
-\
-\
 
 ## Exponential
 
