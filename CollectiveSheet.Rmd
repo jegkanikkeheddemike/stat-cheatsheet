@@ -1,5 +1,13 @@
 # Collective cheatsheet
 
+## Hypotese
+
+En null hypotese kan konkluderes afvist hvis en eller flere af nedstående tilgælde gælder:
+
+1.  p-værdi er under 0.1
+2.  test-statistik (t_obs) er ude af confidensintervallet. (critical value)
+3.  confidensintervallet ikke indeholder der hypotetiske værdi.
+
 ## Binominal:
 
 ```{r}
