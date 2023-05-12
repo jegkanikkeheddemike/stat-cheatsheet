@@ -98,7 +98,7 @@ SumOfAll <- 12129
 
 ```
 
-Calculate P-value (pvalue) for Chi squared
+### Calculate P-value (pvalue) for Chi squared
 
 ```{r}
 tobs <- 132.3
@@ -112,7 +112,7 @@ degreeFreedom <- 6
 
 ![Proportion Confidence interval](PropConf.png){width="398"}
 
-Confidence interval (plus 2 method)
+### Confidence interval (plus 2 method)
 
 ```{r}
 n_success <- 27
@@ -140,6 +140,18 @@ p2+ c(-1,1)* z * sqrt((p2*(1-p2))/n_total2)
 
 
 ```
+
+### Confidens interval mellem to værdier
+
+Hvis der er givet to forskellige værdier og man skal finde confidensintervallet mellem forskellen på dem gøres det således: ![prop CI example](prop_CI.png)
+
+```{r}
+p1 <- 35/80   # 35 er success, 80 er total
+p2 <- 23/90   # 23 er success, 90 er total
+p1-p2 + c(-1,1) * sqrt(p1*(1-p1)/80+p2*(1-p2)/90)*qnorm(0.975)
+```
+
+### test statistic
 
 ![Equal Proportion Example](EqualProportionExample.png) What is the usual test statistic for the test that the proportions of p1 and p2 are equal?
 
@@ -443,6 +455,7 @@ x <- 140
 ```
 
 #### P-value
+
 ```{r}
 n <- 50
 tobs <- 0.857
@@ -451,10 +464,6 @@ df <- n -1
 
 (1-(pt(tobs,df)))*2
 ```
-
-
-
-
 
 ## Confidence interval
 
