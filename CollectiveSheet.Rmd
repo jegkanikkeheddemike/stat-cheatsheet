@@ -227,8 +227,8 @@ Givet et datasæt som i billeded kan dataen indlæses således
 scores <- matrix(c(
   11, 27, 15, 
   14, 40, 30, 
-  5, 23, 80
-),ncol=3)
+  5, 23, 35
+),ncol=3,byrow=TRUE)
 colnames(scores) <- c("Below","Average","Above")
 rownames(scores) <- c("Poor","Medium","Good")
 scores
