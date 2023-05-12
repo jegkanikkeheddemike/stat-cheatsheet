@@ -11,9 +11,9 @@ En null hypotese kan konkluderes afvist hvis en eller flere af nedst√•ende tilg√
 ## Binominal:
 
 ```{r}
-numberOfItems <- 2
-success <- 0
-prob <- 0.5
+numberOfItems <- 35
+success <- 4
+prob <- 4/35
 
 #Calculate the probability of x sucsess, when pulling n numberOfItems
 #where the probability of sucsess is prob.
@@ -58,7 +58,9 @@ n*p*(1-p)
 
 ## Proportion
 
-Often uses Chi Squared for hyp-test
+Often uses Chi Squared for hyp-test\
+But might also use Zobs\
+![Z](Zobs.png)
 
 Prop.test
 
@@ -130,6 +132,34 @@ p2+ c(-1,1)* z * sqrt((p2*(1-p2))/n_total2)
 
 
 ```
+
+![Equal Proportion Example](EqualProportionExample.png)
+What is the usual test statistic for the test that the proportions of p1 and p2 are equal?
+
+```{r}
+
+#What is the usual test statistic for the test that the proportions of MM and NN are equal at
+#UDP, i.e. H0 : pMM,UDP = pNN,UDP ?
+x1 <- 17;
+x2 <- 19;
+x3 <- 15;
+
+n1 <- n2 <- x1 + x2 + x3
+p1 <- x1/n1
+p2 <- x2/n2
+(delta.p <- p2 - p1)
+
+(phat <- (x1+x2)/(n1+n2))
+
+(zobs <- delta.p / sqrt(phat*(1-phat)*(1/n1 + 1/n2)))
+
+## The formula from the answer give the same answer
+2/51/sqrt((6/17)*(11/17)*(2/51))
+
+```
+
+
+
 
 ## Chi Squared
 
@@ -432,9 +462,8 @@ mean + c(-1,1)*qt((1-alpha/2),df = df ) * sd/sqrt(n)
 
 ```
 
+![Confidence interval for Variance and standard deviation](ConfVarSd.png) !!!!!!!! ADVARSEL VED IKKE OM DET VIRKER !!!!!!!!!!
 
-![Confidence interval for Variance and standard deviation](ConfVarSd.png)
-!!!!!!!! ADVARSEL VED IKKE OM DET VIRKER !!!!!!!!!!
 ```{r}
 #sample size
 n <- 10
@@ -458,9 +487,6 @@ c(sqrt(((n-1)*s^2)/chi),sqrt(((n-1)*s^2)/chi2))
 
 
 ```
-
-
-
 
 Mean
 
@@ -704,6 +730,10 @@ sxx <- (n-1) * var(Y)
 t_alpha <- qt(0.95, df=n-2) #alpha = 0.9
 beta_0 + beta_1 * x_0 + c(-1,1) * t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/ sxx))
 ```
+
+![Formula for Confidense and Prediction interval](ConfidenceAndPredictionInterval.png) I model Y = beta0 + beta1 \* x + residuals
+
+Her er Sxx = (n-1) \* var(Y)
 
 ## Quantile
 
