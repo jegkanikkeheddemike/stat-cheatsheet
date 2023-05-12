@@ -1,9 +1,7 @@
 Collective sheet:
 
+## Binominal:
 
-
-Binominal:
---------------------------------------------------
 ```{r}
 numberOfItems <- 2
 success <- 0
@@ -18,11 +16,10 @@ prob <- 0.5
 pbinom(success,numberOfItems,prob)
 ```
 
+## Hyper
 
-
-Hyper
---------------------------------------------------
 Probability
+
 ```{r}
 Type1Drawn <- 1
 Type1All <- 2
@@ -35,7 +32,9 @@ AllDrawn <- 2
 dhyper(x=Type1Drawn, m=Type1All, n=Type2All, k=AllDrawn)
 
 ```
+
 Variance
+
 ```{r}
 
 #Calculate the variance given a probability (p) and number of participants (n)
@@ -47,48 +46,20 @@ n*p*(1-p)
 
 ```
 
+## Poisson
 
+## One way Anova
 
+## Two way Anova
 
+## Exponential
 
-Poisson
---------------------------------------------------
+## Normal
 
+## Confidence interval
 
+Mean
 
-
-
-
-
-
-
-
-
-
-One way Anova
---------------------------------------------------
-
-
-Two way Anova
---------------------------------------------------
-
-
-
-
-Exponential
---------------------------------------------------
-
-Normal
---------------------------------------------------
-
-
-
-
-
-
-Confidence interval
---------------------------------------------------
-Mean 
 ```{r}
 lower <- 2.26
 upper <- 5.26
@@ -99,9 +70,8 @@ upper <- 5.26
 
 ```
 
-
-
 Calculate confidence interval
+
 ```{r}
 n <- 10
 mean <- 0
@@ -126,14 +96,10 @@ mean + c(-1,1)* qt * standardError
 
 ```
 
-
-
-
-Linear Simulation
---------------------------------------------------
-
+## Linear Simulation
 
 Variance
+
 ```{r}
 #Simulate to get variance, normal distribution
 #given 2*Y + 2*X + 4
@@ -153,7 +119,9 @@ z <- 2* Y + 2*X +4
 
 var(z)
 ```
+
 Standard Divination
+
 ```{r}
 #Simulate to get Standard Divination, normal distribution
 #given 2*Y^2 + X^3/3
@@ -174,20 +142,18 @@ z <- 2*Y^2 + X^3/3
 sd(z)
 ```
 
+## test statistic
 
-
-
-test statistic
---------------------------------------------------
 Calculate tobs
+
 ```{r}
 #Given n number of samples
 #Given the actual mean or something similar
 #Compared to the expected mean or something similar
 
-n <- 53
-actual <- 20.088
-expected <- 20.088
+n <- 20
+actual <- 0
+expected <- 0
 
 # given standard deviation
 sd <- -1
@@ -202,40 +168,37 @@ standardError <- 5.867*10^4
 (actual - expected)/(standardError)
 ```
 
+tobs on a certain p-value
+
+```{r}
+NumberOfSamples <- 20
+degreeFreedom <- NumberOfSamples-1
+pValue <- 0.001
+
+qt(1-pValue/2,degreeFreedom)
+qt(pValue/2,degreeFreedom)
 
 
 
 
+```
 
+## Linear Model:
 
-
-Linear Model:
-------------------------------------------------
 I en linear model af
+
 ```{r}
 lm(X ~ Y)
 ```
 
-Gælder det at:
-X er dependent variable
-Y er explanatory variable
+Gælder det at: X er dependent variable Y er explanatory variable
 
-Beta_0 er (Intecept) estimate
-Beta_1 er Y estimate
-sigma er residual standard error.
-
+Beta_0 er (Intecept) estimate Beta_1 er Y estimate sigma er residual standard error.
 
 Predictions ved x_0 udregnes som:
+
 ```{r}
 sxx <- (n-1) * var(Y)
 t_alpha <- qt(0.95, df=n-2) #alpha = 0.9
 beta_0 + beta_1 * x_0 + c(-1,1) * t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/ sxx))
 ```
-
-
-
-
-
-
-
-
