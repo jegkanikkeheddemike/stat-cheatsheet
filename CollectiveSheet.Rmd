@@ -291,6 +291,27 @@ mean + c(-1,1)* qt * standardError
 
 ```
 
+Confidence interval for mean on a data set
+```{r}
+#given a data set
+x <- c(10.5, 9.3, 10.7, 10.8, 11.2)
+
+# remember the %
+alpha <- 0.1
+percent <- (1-alpha/2)
+qt <- qt(percent,length(x)-1)
+mean(x) + c(-1,1)* qt * sd(x)/sqrt(length(x))
+
+#or use t.test remember the conf-level
+t.test(x,conf.level=0.9)
+
+```
+
+
+
+
+
+
 ## Linear Simulation
 
 Variance
@@ -361,7 +382,25 @@ sd <- -1
 standardError <- 5.867*10^4
 #beregn t_obs (tobs)
 (actual - expected)/(standardError)
+
+
+
 ```
+Calculate tobs given two data sets
+```{r}
+#given a two data sets x and y
+x <- c(10.5, 9.3, 10.7, 10.8, 11.2)
+y <- c(8.9, 9.5, 10.2, 9.8, 10.3)
+
+t.test(x,y)
+#find: t = ...
+```
+
+
+
+
+
+
 
 tobs on a certain p-value
 
@@ -372,8 +411,6 @@ pValue <- 0.001
 
 qt(1-pValue/2,degreeFreedom)
 qt(pValue/2,degreeFreedom)
-
-
 
 
 ```
