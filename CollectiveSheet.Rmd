@@ -1,4 +1,4 @@
-Collective sheet:
+# Collective cheatsheet
 
 ## Binominal:
 
@@ -62,6 +62,48 @@ n*p*(1-p)
 ## Two way Anova
 
 ## Exponential
+
+## Simulation af sandsynlighed
+
+Givet en normalfordeling, hvad er sandsynligheden for at et tal er over x?
+
+Fks givet:\
+mean = 20, sd= 5
+
+Hvad er sansynligheden for at et givet tal er over 25?
+
+Dette kan gøres med simulation hvis man ikke kan huske formlen
+
+```{r}
+n <- 10000
+data <- rnorm(n,mean=20, sd=5)
+stor = function(x) {
+  x > 25
+}
+sum(sapply(data,stor)) / n
+
+```
+
+Her er stor en funktion som returnerer en boolean om tallet er større end 25. Ved at summe dem alle op tæller man hvor mange der er sande. Sandsynligheden er derfor antal sande / antal.
+
+### Sum af sandsynlighed
+
+Hvis der skal tages summen af to sandsynligheder, hvor de er normalfordelt kan man bare udregne den nye normalfordeling.
+
+Givet en normalfordelint X og Y hvor:
+
+X = N(20,5²)\
+Y = N(50,10²)
+
+Kan den nye normalfordeling hvor der er 1. af hver være:
+
+NY = N(20+50, sqrt(5² + 10²)²)
+
+NY = N(70,sqrt(125)²)
+
+## Confidence interval
+
+Mean
 
 ## Normal
 
