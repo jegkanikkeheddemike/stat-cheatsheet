@@ -164,7 +164,7 @@ NY = N(20+50, sqrt(5² + 10²)²)
 
 NY = N(70,sqrt(125)²)
 
-### Confidensintervaller i simlation
+### Confidensintervaller i simulation
 
 Hvis der skal findes et confidensinterval i simulationen kan det findes ved
 
