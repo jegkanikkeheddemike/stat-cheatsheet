@@ -48,11 +48,12 @@ n*p*(1-p)
 
 ## Poisson
 
-
 ## Proportion
+
 Often uses Chi Squared for hyp-test
 
 Expected number of x in sample y, under null hyp (no change)
+
 ```{r}
 SumOfX <- 80
 SumOfSample <- 2088
@@ -66,6 +67,7 @@ SumOfAll <- 12129
 
 
 ```
+
 Calculate P-value (pvalue) for Chi squared
 
 ```{r}
@@ -78,14 +80,10 @@ degreeFreedom <- 6
 
 ```
 
-
-
-
-
-
 ## Chi Squared
 
 Degree of Freedom
+
 ```{r}
 NumberOfRows <- 4
 NumberOfColumns <- 3
@@ -94,8 +92,6 @@ degreeFreedom <- (NumberOfRows-1)*(NumberOfColumns-1)
 degreeFreedom
 ```
 
-
-
 Calculate P-value (pvalue) for Chi squared
 
 ```{r}
@@ -107,7 +103,6 @@ degreeFreedom <- 6
 1 - pchisq(tobs, df=degreeFreedom)
 
 ```
-
 
 ```{r}
 NumberOfRows <- 4
@@ -124,7 +119,6 @@ M
 chisq.test(M)
 
 ```
-
 
 ## One way Anova
 
@@ -179,10 +173,6 @@ quantile(sort(data),c(0.025,0.975))
 ```
 
 Hvor der i eksemplet bliver brugt alpha=0.05.
-
-## Confidence interval
-
-Mean
 
 ## Normal
 
