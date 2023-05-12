@@ -440,9 +440,8 @@ mean + c(-1,1)*qt((1-alpha/2),df = df ) * sd/sqrt(n)
 
 ```
 
+![Confidence interval for Variance and standard deviation](ConfVarSd.png) !!!!!!!! ADVARSEL VED IKKE OM DET VIRKER !!!!!!!!!!
 
-![Confidence interval for Variance and standard deviation](ConfVarSd.png)
-!!!!!!!! ADVARSEL VED IKKE OM DET VIRKER !!!!!!!!!!
 ```{r}
 #sample size
 n <- 10
@@ -466,9 +465,6 @@ c(sqrt(((n-1)*s^2)/chi),sqrt(((n-1)*s^2)/chi2))
 
 
 ```
-
-
-
 
 Mean
 
