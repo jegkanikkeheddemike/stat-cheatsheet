@@ -58,7 +58,6 @@ n*p*(1-p)
 
 ## Proportion
 
-
 Often uses Chi Squared for hyp-test
 
 Prop.test
@@ -97,7 +96,9 @@ degreeFreedom <- 6
 ```
 
 ![Proportion Confidence interval](PropConf.png)
+
 Confidence interval (plus 2 method)
+
 ```{r}
 #number of proportions
 all <- 2
@@ -112,15 +113,15 @@ z <- qnorm(0.975)
 
 
 #Conf interval
-(n2)/(o2)+ c(-1,1)* z * sqrt(((n2/o2)-(1-(n2/o2)))/o2)
+(n)/(o)+ c(-1,1)* z * sqrt(((n/o)*(1-(n/o)))/o)
+
+#Conf interval plus 2
+(n2)/(o2)+ c(-1,1)* z * sqrt(((n2/o2)*(1-(n2/o2)))/o2)
 
 
 
 
 ```
-
-
-
 
 ## Chi Squared
 
@@ -343,7 +344,6 @@ Hvor der i eksemplet bliver brugt alpha=0.05.
 
 ![Formula for Normal Distribution](NormalDist.png)
 
-
 Calculate standard deviation
 
 ```{r}
@@ -407,6 +407,24 @@ x <- 140
 ```
 
 ## Confidence interval
+![Confidence interval for mean](OneSampleConf.png)
+```{r}
+#One sample confidence interval mean
+#number of observation in the sample
+n <-10
+mean <- 0
+alpha <- 0.5
+df <- n-1
+sd <- 5
+
+mean + c(-1,1)*qt((1-alpha/2),df = df ) * sd/sqrt(n)
+
+
+```
+
+
+
+
 
 Mean
 
