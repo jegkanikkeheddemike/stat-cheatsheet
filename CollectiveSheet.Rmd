@@ -6,7 +6,7 @@ En null hypotese kan konkluderes afvist hvis en eller flere af nedstående tilg�
 
 1.  p-værdi er under 0.1
 2.  test-statistik (t_obs) er ude af confidensintervallet. (critical value)
-3.  confidensintervallet ikke indeholder der hypotetiske værdi.
+3.  confidensintervallet ikke indeholder den hypotetiske værdi.
 
 ## Binominal:
 
@@ -141,6 +141,22 @@ chisq.test(M)
 ## One way Anova
 
 ## Two way Anova
+
+```{r}
+temp <- c(1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8)
+clo <- c(0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1)
+
+men <- c(0.52, 0.53, 0.54, 0.53, 0.50, 0.46, 0.44, 0.31 )
+women <- c(0.76, 0.71, 0.68, 0.64, 0.50, 0.51, 0.43, 0.31 )
+sex <- c(men,women)
+
+
+?anova.lm
+
+anova(lm(clo ~ temp+sex))
+```
+
+
 
 ## Exponential
 
@@ -404,12 +420,6 @@ t.test(x,y)
 #find: t = ...
 ```
 
-
-
-
-
-
-
 tobs on a certain p-value
 
 ```{r}
@@ -422,6 +432,56 @@ qt(pValue/2,degreeFreedom)
 
 
 ```
+
+
+Power t.test
+
+```{r}
+#pooled variance
+x <- c(10.5, 9.3, 10.7, 10.8, 11.2)
+y <- c(8.9, 9.5, 10.2, 9.8, 10.3)
+n1 <- length(x)
+n2 <- length(y)
+VarPooled <- ((n1-1)*var(x)+(n2-1)*var(y)) / (n1+n2-2)
+
+#minimum number of observations / samples
+power.t.test(delta=1,sd = sqrt(VarPooled),sig.level = 0.01,power=0.99)
+
+
+
+
+```
+
+
+Fobs
+
+```{r}
+k <- 8; n <- 0 # Number of treatments k, total number of observations n
+
+SSTr <- 0.179194
+SSE <-  0.030644
+
+MSTr <- 0.0315062
+MSE <-  0.0043777
+
+degreeFreedomTreatment <- k - 1
+print("Degree of freedom:")
+degreeFreedomTreatment
+
+
+Fobs <- (MSTr / MSE)
+print("Fobs")
+Fobs
+
+
+Fobs <- (SSTr/(k-1)) / (SSE/(n-k))
+print("Fobs")
+Fobs
+
+```
+
+
+
 
 ## Linear Model:
 
