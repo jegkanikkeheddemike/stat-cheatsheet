@@ -50,9 +50,18 @@ n*p*(1-p)
 
 ## Chi Squared
 ```{r}
+NumberOfRows <- 4
+NumberOfColumns <- 3
 
-?chisq.test
-?qchisq
+degreeFreedom <- (NumberOfRows-1)*(NumberOfColumns-1)
+degreeFreedom
+
+
+#enter as columns
+M <- as.table(cbind(c(4675,2222,2750,2040),c(171,95,49,47),c(76,1,2,1)))
+M
+
+chisq.test(M)
 
 ```
 
