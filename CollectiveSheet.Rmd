@@ -96,6 +96,12 @@ NY = N(70,sqrt(125)²)
 
 Mean
 
+## Normal
+
+## Confidence interval
+
+Mean
+
 ```{r}
 lower <- 2.26
 upper <- 5.26
@@ -103,6 +109,32 @@ upper <- 5.26
 #Calculate the mean from a lower and an upper bound of a confidence interval of the mean
 (lower+upper)/2
 #Note you cannot know the sample mean from simulated data
+
+```
+
+Calculate confidence interval
+
+```{r}
+n <- 10
+mean <- 0
+sd <- 0
+standardError <- 945.5
+
+#Calculate qt
+numberOfItems <- 2
+degreeFreedom <- n-numberOfItems
+qt <- qt(0.975,degreeFreedom)
+qt
+#confidence interval
+mean + c(-1,1)* qt * sd/sqrt(n)
+mean + c(-1,1)* qt * standardError
+
+
+#Given qt 
+qt <- 0
+
+mean + c(-1,1)* qt * sd/sqrt(n)
+mean + c(-1,1)* qt * standardError
 
 ```
 
@@ -161,9 +193,9 @@ Calculate tobs
 #Given the actual mean or something similar
 #Compared to the expected mean or something similar
 
-n <- 10
-actual <- 1.019*10^8
-expected <- 1.005*10^8
+n <- 20
+actual <- 0
+expected <- 0
 
 # given standard deviation
 sd <- -1
@@ -176,6 +208,21 @@ sd <- -1
 standardError <- 5.867*10^4
 #beregn t_obs (tobs)
 (actual - expected)/(standardError)
+```
+
+tobs on a certain p-value
+
+```{r}
+NumberOfSamples <- 20
+degreeFreedom <- NumberOfSamples-1
+pValue <- 0.001
+
+qt(1-pValue/2,degreeFreedom)
+qt(pValue/2,degreeFreedom)
+
+
+
+
 ```
 
 ## Linear Model:
