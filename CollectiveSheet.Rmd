@@ -73,6 +73,11 @@ Prop.test
 ```{r}
 #hmm needs explaining...
 prop.test(x=c(171, 47), n=c(4675+171, 2040+47), correct=FALSE, conf.level=0.95)
+
+
+
+#Test if the proportion will be half
+prop.test(60, 114, p=0.5, correct=FALSE)
 ```
 
 Expected number of x in sample y, under null hyp (no change)
@@ -434,6 +439,36 @@ mean + c(-1,1)*qt((1-alpha/2),df = df ) * sd/sqrt(n)
 
 
 ```
+
+
+![Confidence interval for Variance and standard deviation](ConfVarSd.png)
+!!!!!!!! ADVARSEL VED IKKE OM DET VIRKER !!!!!!!!!!
+```{r}
+#sample size
+n <- 10
+#sd(x) standard deviation of x
+s <- 2
+
+alpha <- 0.05
+df <- n-1
+
+
+
+chi <- qchisq(1-alpha/2,df=df)
+chi2 <- qchisq(alpha/2,df=df)
+
+#Interval for Variance
+c(((n-1)*s^2)/chi,((n-1)*s^2)/chi2)
+
+#Interval for Standard deviation
+c(sqrt(((n-1)*s^2)/chi),sqrt(((n-1)*s^2)/chi2))
+
+
+
+```
+
+
+
 
 Mean
 
