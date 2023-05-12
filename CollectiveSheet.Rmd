@@ -238,7 +238,7 @@ chisq.test(scores, correct=FALSE)
 
 ## One way Anova
 
-Fobs for one-way anova
+### Fobs for one-way anova
 
 ![One way anova Fobs](Fobs-oneWay-Anova.png)
 
@@ -273,7 +273,7 @@ MSE <- SSE/dfResidual
 
 ```
 
-Pvalue for one-way anova
+### Pvalue for one-way anova
 
 ```{r}
 #Calculate Fobs, dfTreat and dfResidual above
@@ -282,7 +282,42 @@ Pvalue for one-way anova
 
 ```
 
-## Two way Anova
+### Estimated effect alpha-hat
+
+Estimated effect (symbol er alpha med en hat) forskellen mellem total mean og den speficikke treatment mean.
+
+Eksempel hvor der finde alpha-hat_b:
+
+```{r}
+mean_a <- -1.2866667
+mean_b <- -0.5416667
+mean_c <- -1.1366667
+mean_d <- -0.6816667
+mean_b - mean(c(mean_a,mean_b,mean_c,mean_d))
+### Her bliver det fundet alpha_b
+```
+
+### Post hoc pairwise confidens (difference in means)
+
+Givet to grupper, hvad er confidensintervallet mellem deres forskel? Det udregnes som: ![post_hoc_diff_means](post_hoc_diff_means.png)
+
+Der bliver antaget her at MSE kendes. Se ovenover hvordan det udregenes.
+
+```{r}
+n <- 24
+k <- 4
+mean_1 <- -0.6816667
+n_1 <- 6 # vil ofte bare være n / k
+mean_2 <- -0.5416667
+n_2 <- 6 # vil ofte bare være n / k
+MSE <- 0.16205
+
+t <- qt(0.975, df=n-k)
+
+mean_1 - mean_2 + c(-1,1) * t * sqrt(MSE * (1/n_1 + 1/n_2))
+```
+
+##  Two way Anova
 
 Find the expected value of group1 at treat n
 
