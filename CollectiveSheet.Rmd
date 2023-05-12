@@ -58,6 +58,7 @@ n*p*(1-p)
 
 ## Proportion
 
+
 Often uses Chi Squared for hyp-test
 
 Prop.test
@@ -94,6 +95,32 @@ degreeFreedom <- 6
 1 - pchisq(tobs, df=degreeFreedom)
 
 ```
+
+![Proportion Confidence interval](PropConf.png)
+Confidence interval (plus 2 method)
+```{r}
+#number of proportions
+all <- 2
+#number in proportion to be tested + 2
+n <- 27
+n2 <- n + 2
+# number of observations + 2 * all
+o <- 32
+o2 <- o + 2*all
+
+z <- qnorm(0.975)
+
+
+#Conf interval
+(n2)/(o2)+ c(-1,1)* z * sqrt(((n2/o2)-(1-(n2/o2)))/o2)
+
+
+
+
+```
+
+
+
 
 ## Chi Squared
 
@@ -171,15 +198,15 @@ MSE <- SSE/dfResidual
 
 
 ```
+
 Pvalue for one-way anova
+
 ```{r}
 #Calculate Fobs, dfTreat and dfResidual above
 
 1- pf(Fobs,dfTreat,dfResidual)
 
 ```
-
-
 
 ## Two way Anova
 
