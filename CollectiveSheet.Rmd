@@ -233,7 +233,7 @@ colnames(scores) <- c("Below","Average","Above")
 rownames(scores) <- c("Poor","Medium","Good")
 scores
 
-chisq.test(scores)
+chisq.test(scores, correct=FALSE)
 ```
 
 ## One way Anova
