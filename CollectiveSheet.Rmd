@@ -138,19 +138,41 @@ chisq.test(M)
 ## One way Anova
 
 ## Two way Anova
+Find the expected value of group1 at treat n
 
 ```{r}
-temp <- c(1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8)
-clo <- c(0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1)
-
-men <- c(0.52, 0.53, 0.54, 0.53, 0.50, 0.46, 0.44, 0.31 )
-women <- c(0.76, 0.71, 0.68, 0.64, 0.50, 0.51, 0.43, 0.31 )
-sex <- c(men,women)
+#expected value of group1 at treat n
+OverallAverage <- 0.523
+TreatAverage <- 0.640
+GroupAverage <- 0.479
 
 
-?anova.lm
+#Expected
+OverallAverage+(TreatAverage-OverallAverage)+(GroupAverage-OverallAverage)
 
-anova(lm(clo ~ temp+sex))
+```
+Confidence interval
+
+```{r}
+n <- 16
+mean <- 0.5
+sd <- 0
+standardError <- 0.0043777
+
+#Calculate qt
+numberOfItems <- 2
+degreeFreedom <- n-numberOfItems
+qt <- qt(0.975,degreeFreedom)
+qt
+#confidence interval
+mean + c(-1,1)* qt * sd/sqrt(n)
+mean + c(-1,1)* qt * standardError
+
+
+#Given qt 
+qt <- 0
+
+mean + c(-1,1)* qt * sd/sqrt(n)
 ```
 
 
@@ -286,10 +308,10 @@ upper <- 5.26
 Calculate confidence interval
 
 ```{r}
-n <- 10
-mean <- 0
+n <- 16
+mean <- 0.5
 sd <- 0
-standardError <- 945.5
+standardError <- 0.0043777
 
 #Calculate qt
 numberOfItems <- 2
