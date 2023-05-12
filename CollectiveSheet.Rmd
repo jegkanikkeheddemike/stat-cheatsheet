@@ -175,8 +175,6 @@ qt <- 0
 mean + c(-1,1)* qt * sd/sqrt(n)
 ```
 
-
-
 ## Exponential
 
 ## Simulation af sandsynlighed
@@ -332,6 +330,7 @@ mean + c(-1,1)* qt * standardError
 ```
 
 Confidence interval for mean on a data set
+
 ```{r}
 #given a data set
 x <- c(10.5, 9.3, 10.7, 10.8, 11.2)
@@ -346,11 +345,6 @@ mean(x) + c(-1,1)* qt * sd(x)/sqrt(length(x))
 t.test(x,conf.level=0.9)
 
 ```
-
-
-
-
-
 
 ## Linear Simulation
 
@@ -426,7 +420,9 @@ standardError <- 5.867*10^4
 
 
 ```
+
 Calculate tobs given two data sets
+
 ```{r}
 #given a two data sets x and y
 x <- c(10.5, 9.3, 10.7, 10.8, 11.2)
@@ -449,8 +445,9 @@ qt(pValue/2,degreeFreedom)
 
 ```
 
+### Power t.test
 
-Power t.test
+Two sample
 
 ```{r}
 #pooled variance
@@ -468,8 +465,18 @@ power.t.test(delta=1,sd = sqrt(VarPooled),sig.level = 0.01,power=0.99)
 
 ```
 
+One sample
 
-Fobs
+GIvet en power, afvigelse fra mean, sd og signifikantniveau kan den nødvendige n findes ved:
+
+```{r}
+
+power.t.test(power = 0.9, delta = 0.05, sd = 0.11,
+sig.level = 0.01, type = "one.sample")
+
+```
+
+### Fobs
 
 ```{r}
 k <- 8; n <- 0 # Number of treatments k, total number of observations n
@@ -495,9 +502,6 @@ print("Fobs")
 Fobs
 
 ```
-
-
-
 
 ## Linear Model:
 
