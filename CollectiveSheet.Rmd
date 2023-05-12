@@ -448,6 +448,20 @@ x <- 140
 
 ```
 
+#### P-value
+```{r}
+n <- 50
+tobs <- 0.857
+df <- n -1
+
+
+(1-(pt(tobs,df)))*2
+```
+
+
+
+
+
 ## Confidence interval
 
 ![Confidence interval for mean](OneSampleConf.png)
