@@ -95,28 +95,31 @@ degreeFreedom <- 6
 
 ```
 
-![Proportion Confidence interval](PropConf.png)
+![Proportion Confidence interval](PropConf.png){width="398"}
 
 Confidence interval (plus 2 method)
 
 ```{r}
-#number of proportions
-all <- 2
-#number in proportion to be tested + 2
-n <- 27
-n2 <- n + 2
+n_success <- 27
+n_success2 <- n_success + 2 # BLIVER KUN BRUGT VED +2 METODEN
+
 # number of observations + 2 * all
-o <- 32
-o2 <- o + 2*all
+n_failed <- 5
+n_failed2 <- 5 + 2 # BLIVER KUN BRUGT VED +2 METODEN
+
+n_total <- n_success + n_failed
+n_total2 <- n_success2 + n_failed2
 
 z <- qnorm(0.975)
 
+p <- n_success / n_total      # Proportion
+p2 <- n_success2 / n_total2   # Proportion  BLIVER KUN BRUGT VED +2 METODEN
 
 #Conf interval
-(n)/(o)+ c(-1,1)* z * sqrt(((n/o)*(1-(n/o)))/o)
+p+ c(-1,1)* z * sqrt((p*(1-p))/n_total)
 
-#Conf interval plus 2
-(n2)/(o2)+ c(-1,1)* z * sqrt(((n2/o2)*(1-(n2/o2)))/o2)
+#Conf interval med plus 2 metoden
+p2+ c(-1,1)* z * sqrt((p2*(1-p2))/n_total2)
 
 
 
