@@ -137,6 +137,50 @@ chisq.test(M)
 
 ## One way Anova
 
+Fobs for one-way anova
+
+![One way anova Fobs](Fobs-oneWay-Anova.png)
+
+```{r}
+#number of observations
+n <- 40
+
+#number of treatments
+k <- 8
+
+#treatment
+#sum of squares 
+SSTr <- 111.5
+#Degrees of freedom
+dfTreat <- k-1
+  
+#residuals  
+#sum of squares 
+SSE <- 88.4
+#Degrees of freedom
+dfResidual <- n-k
+  
+  
+MSTr <- SSTr/dfTreat
+
+MSE <- SSE/dfResidual
+
+
+(Fobs <- MSTr/MSE)
+
+
+
+```
+Pvalue for one-way anova
+```{r}
+#Calculate Fobs, dfTreat and dfResidual above
+
+1- pf(Fobs,dfTreat,dfResidual)
+
+```
+
+
+
 ## Two way Anova
 
 Find the expected value of group1 at treat n
@@ -201,12 +245,11 @@ Givet et datasæt som i billeded kan dataen indlæses således
 
 ```{r}
 crops <- matrix(c(
-  79, 80, 73, 83,
-  46, 48, 47, 52,
-  64, 63, 57, 66,
-  66, 68, 62, 68,
-  57, 60, 55, 58
-),ncol=4, byrow=TRUE)
+  79, 46, 64, 66, 57,
+  80, 48, 63, 68, 60,
+  73, 47, 57, 62, 55,
+  83, 52, 66, 68, 58
+),ncol=4)
 colnames(crops) <- c("2014","2015","2016", "2017")
 rownames(crops) <- c("Crop 1","Crop 2","Crop 3","Crop 4","Crop 5")
 crops
