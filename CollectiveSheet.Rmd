@@ -151,29 +151,52 @@ GroupAverage <- 0.479
 OverallAverage+(TreatAverage-OverallAverage)+(GroupAverage-OverallAverage)
 
 ```
-Confidence interval
 
+
+Confidence interval, for the difference in mean valuw from group1 and group2
+pre-planned 95% confidence interval
 ```{r}
-n <- 16
-mean <- 0.5
-sd <- 0
-standardError <- 0.0043777
+TotalNumberOfSamples <- 16
+NumberOfTreat <- 8
+mean1 <- 0.479
+mean2 <- 0.568
+sd1 <- 0.077
+sd2 <- 0.155
+
+SSTr <- 0.179194
+SSE <- 0.030644
+
+MSTr <-  0.0255991
+MSE <-  0.0043777
 
 #Calculate qt
-numberOfItems <- 2
-degreeFreedom <- n-numberOfItems
+numberOfItems <- 1
+degreeFreedom <- NumberOfTreat - numberOfItems
+degreeFreedom
 qt <- qt(0.975,degreeFreedom)
 qt
+
 #confidence interval
-mean + c(-1,1)* qt * sd/sqrt(n)
-mean + c(-1,1)* qt * standardError
+(mean1 - mean2) + c(-1,1)*qt *sqrt(MSE*2/NumberOfTreat)
 
-
-#Given qt 
-qt <- 0
-
-mean + c(-1,1)* qt * sd/sqrt(n)
 ```
+
+pvalue, given a data set
+
+```{r}
+tab <- data.frame(clo=c(0.52,0.53,0.54,0.53,0.50,0.46,0.44,0.31,
+0.76,0.71,0.68,0.64,0.50,0.51,0.43,0.31))
+tab$temp <- as.factor(c(1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8))
+
+anova(lm(clo ~temp,data=tab))
+
+
+```
+
+
+
+
+
 
 ## Exponential
 
