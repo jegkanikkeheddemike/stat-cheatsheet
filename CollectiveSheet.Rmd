@@ -339,7 +339,10 @@ quantile(sort(data),c(0.025,0.975),type=2)
 
 Hvor der i eksemplet bliver brugt alpha=0.05.
 
-## Normal
+## Normal distribution
+
+![Formula for Normal Distribution](NormalDist.png)
+
 
 Calculate standard deviation
 
