@@ -48,6 +48,15 @@ n*p*(1-p)
 
 ## Poisson
 
+## Chi Squared
+```{r}
+
+?chisq.test
+?qchisq
+
+```
+
+
 ## One way Anova
 
 ## Two way Anova
