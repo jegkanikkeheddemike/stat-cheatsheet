@@ -407,7 +407,9 @@ x <- 140
 ```
 
 ## Confidence interval
+
 ![Confidence interval for mean](OneSampleConf.png)
+
 ```{r}
 #One sample confidence interval mean
 #number of observation in the sample
@@ -422,6 +424,32 @@ mean + c(-1,1)*qt((1-alpha/2),df = df ) * sd/sqrt(n)
 
 ```
 
+
+![Confidence interval for Variance and standard deviation](ConfVarSd.png)
+!!!!!!!! ADVARSEL VED IKKE OM DET VIRKER !!!!!!!!!!
+```{r}
+#sample size
+n <- 10
+#sd(x) standard deviation of x
+s <- 2
+
+alpha <- 0.05
+df <- n-1
+
+
+
+chi <- qchisq(1-alpha/2,df=df)
+chi2 <- qchisq(alpha/2,df=df)
+
+#Interval for Variance
+c(((n-1)*s^2)/chi,((n-1)*s^2)/chi2)
+
+#Interval for Standard deviation
+c(sqrt(((n-1)*s^2)/chi),sqrt(((n-1)*s^2)/chi2))
+
+
+
+```
 
 
 
