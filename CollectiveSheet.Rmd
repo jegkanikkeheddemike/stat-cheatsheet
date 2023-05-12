@@ -1,0 +1,98 @@
+Collective sheet:
+
+
+
+Binominal:
+--------------------------------------------------
+```{r}
+numberOfItems <- 2
+sucsess <- 1
+prob <- 0.5
+
+#Calculate the probability of x sucsess, when pulling n numberOfItems
+#where the probability of sucsess is prob.
+
+#Beregn sandsynligheden for x succeser, når der vælges n antal ting
+#Og sandsynligheden for en succses er prob.
+
+pbinom(success,numberOfItems,prob)
+```
+Hyper
+--------------------------------------------------
+Probability
+```{r}
+Type1Drawn <- 1
+Type1All <- 2
+Type2All <- 2
+AllDrawn <- 2
+
+#The probability of having drawn x Type1Drawn, in a draw of n AllDrawn.
+#Where there are x of Type1All and x of Type2All to choose from.
+
+dhyper(x=Type1Drawn, m=Type1All, n=Type2All, k=AllDrawn)
+
+```
+
+Variance
+```{r}
+
+#Calculate the variance given a probability (p) and number of participants (n)
+n <- 25
+p <- 0.8
+
+#variance
+n*p*(1-p)
+
+```
+
+
+
+
+
+Poisson
+--------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+One way Anova
+--------------------------------------------------
+
+
+Two way Anova
+--------------------------------------------------
+
+
+
+
+Exponential
+--------------------------------------------------
+
+Normal
+--------------------------------------------------
+
+Confidence interval
+--------------------------------------------------
+Mean 
+```{r}
+lower <- 2.26
+upper <- 5.26
+  
+#Calculate the mean from a lower and an upper bound of a confidence interval of the mean
+(lower+upper)/2
+#Note you cannot know the sample mean from simulated data
+
+```
+
+
+
+
+
