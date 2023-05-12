@@ -61,6 +61,15 @@ n*p*(1-p)
 Often uses Chi Squared for hyp-test\
 But might also use Zobs\
 ![Z](Zobs.png)
+Often uses Chi Squared for hyp-test.
+
+Hvis der skal sammenliges to værdier bruges prop.test:
+
+```{r}
+prop.test(success, total, p=0.5,correct=FALSE)
+```
+
+Man skal ALTID bruge correct = FALSE. Aner ikke hvorfor. Her er {p} null hypotese værdien.
 
 Prop.test
 
