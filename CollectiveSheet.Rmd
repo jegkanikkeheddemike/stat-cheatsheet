@@ -6,7 +6,7 @@ Binominal:
 --------------------------------------------------
 ```{r}
 numberOfItems <- 2
-sucsess <- 1
+success <- 0
 prob <- 0.5
 
 #Calculate the probability of x sucsess, when pulling n numberOfItems
@@ -17,6 +17,9 @@ prob <- 0.5
 
 pbinom(success,numberOfItems,prob)
 ```
+
+
+
 Hyper
 --------------------------------------------------
 Probability
@@ -93,6 +96,23 @@ upper <- 5.26
 ```
 
 
+Linear
+------------------------------------------------
 
+
+Variance
+```{r}
+#Simulate to get variance, normal distribution
+k <- 500000
+
+MeanX <- 10
+SdX <- sqrt(4)
+
+MeanY <- 20
+SdY <- sqrt(25)
+
+var(2*rnorm(k,MeanY,SdY)+2*rnorm(k,MeanX,SdX)+4)
+```
+Standard Divination
 
 
