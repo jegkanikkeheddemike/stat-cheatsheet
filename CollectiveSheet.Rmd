@@ -4,7 +4,7 @@
 
 En null hypotese kan konkluderes afvist hvis en eller flere af nedstående tilgælde gælder:
 
-1.  p-værdi er under 0.1
+1.  p-værdi er under alpha (eller nogen gange bare 0.1)
 2.  test-statistik (t_obs) er ude af confidensintervallet. (critical value)
 3.  confidensintervallet ikke indeholder der hypotetiske værdi.
 
@@ -61,14 +61,11 @@ n*p*(1-p)
 Often uses Chi Squared for hyp-test
 
 Prop.test
+
 ```{r}
 #hmm needs explaining...
 prop.test(x=c(171, 47), n=c(4675+171, 2040+47), correct=FALSE, conf.level=0.95)
 ```
-
-
-
-
 
 Expected number of x in sample y, under null hyp (no change)
 
@@ -193,7 +190,9 @@ quantile(sort(data),c(0.025,0.975))
 Hvor der i eksemplet bliver brugt alpha=0.05.
 
 ## Normal
+
 Calculate standard deviation
+
 ```{r}
 #Given mean and a percentage within a range
 Mean <- 100
@@ -212,11 +211,8 @@ sd <- (rangeLower-Mean)/Z
 sd
 ```
 
-
-
-
-
 Percentage of items above a value x
+
 ```{r}
 #Given mean and sd
 
@@ -256,8 +252,6 @@ x <- 140
 
 
 ```
-
-
 
 ## Confidence interval
 
@@ -405,10 +399,3 @@ sxx <- (n-1) * var(Y)
 t_alpha <- qt(0.95, df=n-2) #alpha = 0.9
 beta_0 + beta_1 * x_0 + c(-1,1) * t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/ sxx))
 ```
-
-
-
-
-
-
-
