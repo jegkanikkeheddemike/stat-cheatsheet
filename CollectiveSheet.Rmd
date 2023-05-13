@@ -112,7 +112,7 @@ dhyper(wantedSuccsess, successes , fails, drawn)
 
 Often uses Chi Squared for hyp-test\
 But might also use Zobs\
-![Z](billeder/Zobs.png) Often uses Chi Squared for hyp-test.
+![Z](Zobs.png) Often uses Chi Squared for hyp-test.
 
 Hvis der skal sammenliges to værdier bruges prop.test:
 
@@ -1061,3 +1061,7 @@ Definitionen på ciefficient of variation er sd/mean
 ## Propogation of error
 
 Propogation of error er mega klamt od udregenses således: ![Progoation_of_error](billeder/propogation_of_error.png){width="417"}
+
+##Pvalue
+
+![P value](billeder/PvalueBogen.png)
