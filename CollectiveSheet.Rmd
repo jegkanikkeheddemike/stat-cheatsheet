@@ -32,11 +32,26 @@ Getting **at least** x successes when pulling from n
 # getting at least x successes, when pulling from n
 # with probablility of success = prob
 
-numberOfItems <- 10
-success <- 2
-prob <- 0.2
+numberOfItems <- 18+14
+success <- 18
+prob <- 0.5
 
 1 - pbinom(success - 1 ,numberOfItems,prob)
+```
+
+Standard deviation (variance)\
+
+```{r}
+sd(c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1))
+
+n <- 14+18
+prob <- 18/n
+prob
+
+var <- n*prob*(1-prob)
+var
+sd <- sqrt(var)
+sd
 ```
 
 ## Hyper
@@ -475,7 +490,7 @@ anova(lm(clo ~temp,data=tab))
 
 ```
 
-#### calculate p-value
+#### calculate p-value two way anova
 
 ```{r}
 k <- 7; l <- 4; n <- 28; # Number of treatments k, number of partisipantc(Block) l, total number of observations n
@@ -988,7 +1003,7 @@ t_alpha <- qt(0.95, df=n-2) #alpha = 0.9
 beta_0 + beta_1 * x_0 + c(-1,1) * t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/ sxx))
 ```
 
-![Formula for Confidense and Prediction interval](ConfidenceAndPredictionInterval.png) I model Y = beta0 + beta1 \* x + residuals
+![Formula for Confidense and Prediction interval](billeder/ConfidenceAndPredictionInterval.png) I model Y = beta0 + beta1 \* x + residuals
 
 Her er Sxx = (n-1) \* var(Y)
 
