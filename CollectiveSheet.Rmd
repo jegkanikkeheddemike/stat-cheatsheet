@@ -373,6 +373,24 @@ anova(lm(clo ~temp,data=tab))
 
 ```
 
+### Find DF
+
+Dette forhold gælder for degress of freedom i et two way anova.
+
+k = antal treatments
+
+DFTreatment = k -1
+
+l = antal blocks
+
+DFBLock = l - 1
+
+DFResudial = (l-1)\*(k-1)
+
+Total = n-1
+
+n = k \* l
+
 ## Exponential
 
 ### Find median ved givet mean
@@ -754,6 +772,16 @@ sig.level = 0.01, type = "one.sample")
 
 ```
 
+### Hvad power i virkeligheden er
+
+Power defineres som:\
+Sandsynligheden for at lave en type 2 error er lig 1-power
+
+En type 1 error er at afvise null mens null er sand\
+En type 2 error er at acceptere null mens null er falsk.
+
+Det betyder at høj power lig lav sandsynlighed for at lave fejl. Større n giver også mere power.
+
 ### Fobs
 
 ```{r}
@@ -804,6 +832,14 @@ beta_0 + beta_1 * x_0 + c(-1,1) * t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/
 ![Formula for Confidense and Prediction interval](ConfidenceAndPredictionInterval.png) I model Y = beta0 + beta1 \* x + residuals
 
 Her er Sxx = (n-1) \* var(Y)
+
+### Multiple R squared
+
+Multiple R squared er en skalar fra 0-\>1 som beskriver hvor meget af variansen som modellem forklarer.
+
+Eksempel:
+
+Multiple R squared = 0.22 -\> 22% af variansen kan forklares af modellen.
 
 ## Quantile
 
