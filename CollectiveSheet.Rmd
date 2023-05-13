@@ -96,10 +96,7 @@ SumOfAll <- 200
 
 ```
 
-
-
-![Proportion data](ProportionData.png)
-Using the data above calculate; Confidence interval for proportion
+![Proportion data](ProportionData.png) Using the data above calculate; Confidence interval for proportion
 
 ```{r}
 #confidence interval for a proportion (or a chunk of proportions)
@@ -114,11 +111,6 @@ pHat <- (SumOfSample)/SumOfAll
 
 pHat + c(-1,1) * qnorm(1-alpha/2) *sqrt(pHat*(1-pHat)/200)
 ```
-
-
-
-
-
 
 ### Calculate P-value (pvalue) for Chi squared
 

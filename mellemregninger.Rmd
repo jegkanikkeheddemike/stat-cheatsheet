@@ -1,0 +1,421 @@
+
+
+
+
+```{r}
+#Given mean and sd
+
+mean <- 0.12
+sd <- 0.02
+
+#percent of items above x
+x <- 0.08
+1 - pnorm(x, mean=mean, sd=sd)
+
+
+
+
+#Given mean and a percentage within a range
+Mean <- 100
+Percentage <- 68
+rangeLower <- 85
+rangeUpper <- 115
+
+## The quantile at range Lower
+lowerQuan <- Mean/2-Percentage/2
+lowerQuan
+## The quantile at range upper
+upperQuan <- Mean/2+Percentage/2
+upperQuan
+
+## The lower quantile in the std. norm.
+Z <- qnorm(lowerQuan/100)
+
+
+#calculate Standard Deviation
+sd <- (rangeLower-Mean)/Z
+
+#percent of items above x
+x <- 140
+1 - pnorm(x, mean=mean, sd=sd)
+
+```
+
+
+
+
+
+
+```{r}
+data <- c(74.7,
+74.2,
+74.1,
+69.6,
+75.4,
+76.3,
+76.7,
+75.6,
+72.0,
+74.3)
+
+sort(data)
+
+mean(c(75.6 ,76.3))
+
+quantile(data,0.8,type = 2)
+
+
+
+mean(data) + c(-1, 1) *sd(data)
+
+
+
+qnorm <- qnorm(0.975)
+
+pnorm(qnorm,)
+
+mean <- 74.29
+mean + c(-1,1)*qnorm 
+
+```
+```{r}
+
+x1 <- c(74.7, 74.2, 74.1, 69.6, 75.4, 76.3, 76.7, 75.6, 72.0, 74.3)
+x2 <- c(79.6, 77.5, 82.5, 76.7, 78.2, 76.7, 76.6, 78.1, 79.2)
+t.test(x2, x1,conf.level=0.99)
+
+?t.test
+
+```
+
+
+
+```{r}
+
+week <- c(1, 1, 1, 3, 3, 4, 5, 5, 5, 5, 6, 6, 7, 7, 8, 9, 9, 10, 12, 12, 13, 13,
+15, 15, 15, 16, 16)
+pulse <- c(137.6, 140.1, 143.0, 148.6, 135.6, 139.0, 155.8, 135.0, 149.0, 133.0,
+135.3, 139.8, 137.2, 137.9, 136.8, 134.6, 152.3, 131.9, 137.2, 160.3,
+130.9, 130.9, 131.8, 131.4, 135.6, 138.6, 136.3)
+speed <- c(10.01, 10.02, 10.39, 11.86, 9.65, 10.40, 12.60, 9.80, 11.52, 9.59,
+10.26, 10.42, 10.05, 10.48, 10.03, 10.29, 12.22, 10.27, 10.80, 13.79,
+10.40, 9.49, 10.09, 10.34, 11.18, 11.33, 11.34)
+
+
+
+
+summary(lm(speed~week))
+
+qt(0.975,25)
+
+
+```
+
+```{r}
+x <- c(1, 1, 1, 3, 3, 4, 5, 5, 5, 5, 6, 6, 7, 7, 8, 9, 9, 10, 12, 12, 13, 13,
+15, 15, 15, 16, 16)
+pulse <- c(137.6, 140.1, 143.0, 148.6, 135.6, 139.0, 155.8, 135.0, 149.0, 133.0,
+135.3, 139.8, 137.2, 137.9, 136.8, 134.6, 152.3, 131.9, 137.2, 160.3,
+130.9, 130.9, 131.8, 131.4, 135.6, 138.6, 136.3)
+y <- c(10.01, 10.02, 10.39, 11.86, 9.65, 10.40, 12.60, 9.80, 11.52, 9.59,
+10.26, 10.42, 10.05, 10.48, 10.03, 10.29, 12.22, 10.27, 10.80, 13.79,
+10.40, 9.49, 10.09, 10.34, 11.18, 11.33, 11.34)
+
+
+n <- length(x)
+
+Sxx <- sum((y-mean(y))^2)
+Sxx
+
+
+
+ t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/ sxx))
+```
+
+
+
+
+MS(Tr) = SS(Tr)/k−1
+Fobs = MS(Tr)/MSE
+
+
+```{r}
+k <- 8
+n <- 40
+TotalNumberOfSamples <- 40
+NumberOfTreat <- 8
+mean1 <- 0
+mean2 <- 0
+sd1 <- 0
+sd2 <- 0
+
+SSTr <- 111.5
+SSE <- 88.4
+
+
+
+MSE <-  0
+
+
+
+#Calculate qt
+numberOfItems <- 1
+degreeFreedom <- NumberOfTreat - numberOfItems
+degreeFreedom
+qt <- qt(0.975,degreeFreedom)
+qt
+
+MSTr <-  SSTr/(NumberOfTreat-1)
+MSE <- SSE / degreeFreedom
+
+(Fobs <- MSTr/MSE)
+
+#confidence interval
+(mean1 - mean2) + c(-1,1)*qt *sqrt(MSE*2/NumberOfTreat)
+
+
+
+
+#Pvalue
+?pf
+1-pf(Fobs,k-1,n-k)
+
+```
+
+
+Proporstions
+
+```{r}
+(27+2)/(32+4)
+
+
+
+```
+
+
+```{r}
+## The data table
+tbl <- matrix(c(27, 20, 13, 2, 22, 3, 4, 11, 12), nrow = 3)
+rownames(tbl) <- c("Car", "Bike", "Trainorbus")
+colnames(tbl) <- c("Car", "Bike", "Trainorbus")
+tbl
+
+sum(tbl)
+#car
+sum(c(27, 20, 13))
+
+
+
+chisq.test(tbl, correct = FALSE)
+
+prop.test(60, 114, p=0.5, correct=FALSE)
+
+
+
+```
+
+```{r}
+## The data table
+tbl <- matrix(c(19,15,17,43,7,9), nrow = 3)
+rownames(tbl) <- c("MM", "MN", "NN")
+colnames(tbl) <- c("UDP", "ISU")
+tbl
+
+sum(tbl)
+
+
+chisq.test(tbl, correct = FALSE)
+
+t.test(tbl)
+
+prop.test(tbl,correct=FALSE)
+?prop.test
+```
+
+
+
+
+
+```{r}
+df <- 5
+2*pchisq(qnorm(0.975),df=df)
+1-2*pchisq(qnorm(0.975),df=df)
+
+
+1 - pchisq(24.52, df=1)
+
+qnorm(0.95)
+1 - pchisq(qnorm(0.95),df=1)
+```
+
+
+
+(31/35)^7
+
+
+```{r}
+## Number of simulations
+k <- 10000
+## Simulate each sample k times
+simxsamples <- replicate(k, sample(x, replace=TRUE))
+simysamples <- replicate(k, sample(y, replace=TRUE))
+## Calculate the sample mean differences
+simmeandifs <- apply(simxsamples,2,mean) - apply(simysamples,2,mean)
+## Quantiles of the differences gives the CI
+quantile(simmeandifs, c(0.005,0.995))
+## 0.5% 99.5%
+## -9.23 31.63
+quantile(simmeandifs, c(0.025,0.975))
+## 2.5% 97.5%
+## -4.125 26.106
+## CI for the median differences
+simmediandifs <- apply(simxsamples,2,median) - apply(simysamples,2,median)
+
+```
+
+
+
+
+
+```{r}
+
+?power.t.test
+
+power.t.test(delta=40, sd = 10,sig.level = 0.05, power=0.99)
+
+
+```
+
+sqrt(7.539566)
+sxx <- (1078-1) *  7.930949
+sxx
+
+
+```{r}
+x <- c(-1.63, -1.37, -1.21, -0.60, -0.36, -0.26, -0.18, 0.02, 0.29, 0.39)
+var(x)
+
+quantile(x,0.25,type=2)
+sort(x)
+```
+
+
+
+```{r}
+#Given n number of samples
+#Given the actual mean or something similar
+#Compared to the expected mean or something similar
+
+n <- 50
+actual <- 3505.7
+expected <- 0
+
+# given standard deviation
+sd <- 467.9
+#beregn t_obs (tobs)
+tobs <- (actual - expected)/(sd/sqrt(n))
+tobs
+qt(0.975,49)
+
+
+mean <- 3505.7
+?qt
+?pt
+
+mean+ c(-1,1)*pt(qt(0.975,df=49),df=49)*(sd/sqrt(50))
+
+(3328.3+ 3683.0)/2
+(3372.7+ 3638.7)/2
+
+
+
+#One sample confidence interval mean
+#number of observation in the sample
+n <-50
+mean <- 3505.7
+alpha <- 0.05
+df <- n-1
+sd <- 467.9
+
+1 - alpha/2
+
+mean + c(-1,1)* qt(1-alpha/2,df=df) * sd/sqrt(n)
+
+
+
+```
+
+qt(1-alpha/2,)
+
+(1-(pt(0.857,49)))*2
+
+
+
+
+
+
+
+Welch t.test
+
+
+
+```{r}
+#v degrees of freedom
+
+
+n1 <- 50
+n2 <- 50
+
+s1 <- 467.9
+s2 <- 409
+
+b1 <- s1^2/n1
+b2 <- s2^2/n2
+
+v <- (b1+b2)^2/((b1)^2/(n1-1)+(b2)^2/(n2-1))
+
+v
+
+
+
+```
+
+
+
+```{r}
+scores <- matrix(c(
+  14, 40, 30, 
+  5, 23, 35
+),ncol=2)
+rownames(scores) <- c("Below","Average","Above")
+colnames(scores) <- c("Medium","Good")
+scores
+
+prop.test(scores, correct=FALSE)
+
+
+#confidence interval for a proportion (or a chunck of proportions)
+#Given
+SumOfSample <- 84+63
+SumOfAll <- 200
+
+alpha <- 0.05
+
+# pHat
+pHat <- (SumOfSample)/SumOfAll
+
+pHat + c(-1,1) * qnorm(1-alpha/2) *sqrt(pHat*(1-pHat)/200)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
