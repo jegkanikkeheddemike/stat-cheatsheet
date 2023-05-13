@@ -5,8 +5,9 @@
 En null hypotese kan konkluderes afvist hvis en eller flere af nedstående tilgælde gælder:
 
 1.  p-værdi er under alpha (eller nogen gange bare 0.1)
-2.  test-statistik (t_obs) er ude af confidensintervallet. (critical value)
-3.  confidensintervallet ikke indeholder den hypotetiske værdi.
+2.  test-statistik (t_obs) er ude af confidensintervallet. (critical value)?? (Måske)
+3.  test-statistik (t_obs) er ude for qt(0.975, df=givet_df)
+4.  confidensintervallet ikke indeholder den hypotetiske værdi.
 
 ## Binominal:
 
@@ -39,19 +40,25 @@ prob <- 0.5
 1 - pbinom(success - 1 ,numberOfItems,prob)
 ```
 
-Standard deviation (variance)\
+Standard deviation (variance) and probability
 
 ```{r}
-sd(c(0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1))
+#Number of fails and successes
+fail <- 14
+success <- 18
+x <- c(rep(0,fail), rep(1,success))
 
-n <- 14+18
-prob <- 18/n
+#get the standard deviation and variance
+sd(x)
+var(x)
+
+#Given number of fails and successes
+n <- fail + success
+prob <- success/n
+
+#get the probability of success
 prob
 
-var <- n*prob*(1-prob)
-var
-sd <- sqrt(var)
-sd
 ```
 
 ## Hyper
@@ -207,7 +214,7 @@ degreeFreedom <- (numCol-1)*(numRow-1)
 
 ![Proportion Confidence interval](billeder/PropConf.png){width="398"}
 
-### Confidence interval (plus 2 method)
+### Confidence interval for a proportion (plus 2 method)
 
 ```{r}
 n_success <- 27
@@ -236,7 +243,7 @@ p2+ c(-1,1)* z * sqrt((p2*(1-p2))/n_total2)
 
 ```
 
-### Confidens interval mellem to værdier
+### Confidens interval mellem to værdier (difference between proportions)
 
 Hvis der er givet to forskellige værdier og man skal finde confidensintervallet mellem forskellen på dem gøres det således: ![prop CI example](billeder/prop_CI.png)
 
@@ -245,6 +252,51 @@ p1 <- 35/80   # 35 er success, 80 er total
 p2 <- 23/90   # 23 er success, 90 er total
 p1-p2 + c(-1,1) * sqrt(p1*(1-p1)/80+p2*(1-p2)/90)*qnorm(0.975)
 ```
+
+Use given numbers, indsæt egne tal vvvvvvvv
+
+```{r}
+alpha <- 0.05
+
+#successes in each proportion
+x1 <- 26
+x2 <- 11
+
+#total in each proportion
+n1 <- 189
+n2 <- 157
+
+#calulate the proportions  
+p1 <- x1/n1
+p2 <- x2/n2
+
+#CI
+p1-p2 + c(-1,1) * sqrt(p1*(1-p1)/n1+p2*(1-p2)/n2)*qnorm(1-alpha/2)
+
+```
+
+a proportions contribution to the test statistic
+
+```{r}
+#the total for the column
+ni <- 189
+
+#the total for the row
+nj <- 344
+  
+#the total of all
+n <- 662
+
+e <- ni*nj/n  
+
+
+#the number in the cell (that proportion)
+x <- 96
+  
+(e-x)^2/e
+```
+
+\
 
 ### test statistic (Treatment)
 
@@ -325,7 +377,7 @@ chisq.test(M)
 
 ```
 
-#### Indlæsning af datasæt
+### Indlæsning af datasæt
 
 ![Chisq test. aka X\^2 test.](billeder/chisq-data.png){alt="Chisq test. aka X^2 test."}
 
@@ -345,6 +397,24 @@ chisq.test(scores, correct=FALSE)
 
 
 ```
+
+### contribution to test statistic
+
+Hvad er contribution til test-statisstic for "celle navn"?
+
+Det her er meget let at regne :) Det udregnes som:
+
+```{r}
+cell_value <- 10
+row_total <- 129
+column_total <- 76
+all_total <- 1268
+
+e <- row_total * column_total / all_total
+(e - cell_value)^2 / e
+```
+
+## 
 
 ## One way Anova
 
@@ -433,6 +503,14 @@ mean_1 - mean_2 + c(-1,1) * t * sqrt(MSE * (1/n_1 + 1/n_2))
 ### Standard deviation
 
 standard deviation er lig sqrt(residual_MeanSq)
+
+### Proportion of variance explained
+
+Delen af variansen som kan blive forklaret af en model er lig
+
+SStr / SST
+
+Hvor SST er lig SSTr + SSE
 
 ## Two way Anova
 
@@ -541,6 +619,10 @@ Total = n-1
 
 n = k \* l
 
+![How to read Output](billeder/HowToReadAnova.png){width="450"}
+
+SST = SSTr + SSE
+
 ## Exponential
 
 ### Find median ved givet mean
@@ -619,7 +701,7 @@ Hvor der i eksemplet bliver brugt alpha=0.05.
 
 ![Formula for Normal Distribution](bilelder/NormalDist.png)
 
-Calculate standard deviation
+#### Calculate standard deviation (Normal distribution)
 
 ```{r}
 #Given mean and a percentage within a range
@@ -643,15 +725,12 @@ Percentage of items above a value x
 
 ```{r}
 #Given mean and sd
-
 mean <- 100
 sd <- 15
 
 #percent of items above x
 x <- 140
 1 - pnorm(x, mean=mean, sd=sd)
-
-
 
 
 #Given mean and a percentage within a range
@@ -670,18 +749,15 @@ upperQuan
 ## The lower quantile in the std. norm.
 Z <- qnorm(lowerQuan/100)
 
-
 #calculate Standard Deviation
 sd <- (rangeLower-Mean)/Z
 
 #percent of items above x
 x <- 140
 1 - pnorm(x, mean=mean, sd=sd)
-
-
 ```
 
-#### P-value
+#### P-value (Normal distribution)
 
 ```{r}
 n <- 50
@@ -696,6 +772,10 @@ df <- n -1
 
 ![Confidence interval for mean](billeder/OneSampleConf.png)
 
+#### One Sample mean (parametric/calculate)
+
+normal distribution uses this one
+
 ```{r}
 #One sample confidence interval mean
 #number of observation in the sample
@@ -706,7 +786,6 @@ df <- n-1
 sd <- 5
 
 mean + c(-1,1)*qt((1-alpha/2),df = df ) * sd/sqrt(n)
-
 
 ```
 
@@ -736,7 +815,7 @@ c(sqrt(((n-1)*s^2)/chi),sqrt(((n-1)*s^2)/chi2))
 
 ```
 
-Mean
+Mean from confidence interval of mean
 
 ```{r}
 lower <- 2.26
@@ -748,7 +827,9 @@ upper <- 5.26
 
 ```
 
-Calculate confidence interval
+#### Mean (parametric/calculate)
+
+Calculate confidence for mean interval (??? distribution)
 
 ```{r}
 n <- 16
@@ -757,14 +838,16 @@ sd <- 0
 standardError <- 0.0043777
 
 #Calculate qt
-numberOfItems <- 2
-degreeFreedom <- n-numberOfItems
+numberOfItems <- 1
+degreeFreedom <- n - numberOfItems
+
 qt <- qt(0.975,degreeFreedom)
 qt
+
+
 #confidence interval
 mean + c(-1,1)* qt * sd/sqrt(n)
 mean + c(-1,1)* qt * standardError
-
 
 #Given qt 
 qt <- 0
@@ -774,26 +857,28 @@ mean + c(-1,1)* qt * standardError
 
 ```
 
+#### Mean (data set)
+
 Confidence interval for mean on a data set
 
 ```{r}
 #given a data set
 x <- c(10.5, 9.3, 10.7, 10.8, 11.2)
 
-# remember the %
+# remember the alpha
 alpha <- 0.1
-percent <- (1-alpha/2)
-qt <- qt(percent,length(x)-1)
+qt <- qt((1-alpha/2),length(x)-1)
 mean(x) + c(-1,1)* qt * sd(x)/sqrt(length(x))
 
-#or use t.test remember the conf-level
+#or use t.test remember the conf.level aka alpha
 t.test(x,conf.level=0.9)
 
 ```
 
-#### Varians / sd
+#### Varians / sd (data set)
 
 For at regne et konfidensinterval af en varians af noget data skal der bruges:\
+Confidence interval for variance on a data set
 
 ```{r}
 my_df = 9
@@ -993,7 +1078,9 @@ lm(X ~ Y)
 
 Gælder det at: X er dependent variable Y er explanatory variable
 
-Beta_0 er (Intecept) estimate Beta_1 er Y estimate sigma er residual standard error.
+Beta_0 er (Intecept) estimate\
+Beta_1 er Y\
+Estimate sigma er residual standard error.
 
 Predictions ved x_0 udregnes som:
 
@@ -1014,6 +1101,32 @@ Multiple R squared er en skalar fra 0-\>1 som beskriver hvor meget af variansen 
 Eksempel:
 
 Multiple R squared = 0.22 -\> 22% af variansen kan forklares af modellen.
+
+### Confidence interval for beta_i
+
+```{r}
+n <- 20
+bHat <- 23.25
+
+#residual error
+sigmaHat <- 1.74
+
+# lidt i tvivl om degrees of freedom
+df <- n - 2
+
+bHat + c(-1,1)* qt(0.975,df)*sigmaHat
+
+
+
+#givet et fit
+x <- c(rnorm(20, mean=5, sd=5))
+y <- c(rnorm(20, mean=2, sd=5))
+
+fit <- lm( y~x )
+confint(fit,level=0.95)
+
+
+```
 
 ## Quantile
 
@@ -1060,8 +1173,16 @@ Definitionen på ciefficient of variation er sd/mean
 
 ## Propogation of error
 
-Propogation of error er mega klamt od udregenses således: ![Progoation_of_error](billeder/propogation_of_error.png){width="417"}
+Propogation of error er mega klamt od udregenses således: ![Progoation_of_error](billeder/propogation_of_error.png){width="417"} Der kan ofte findes det rigtige resultat ved at det her finder varians, og der skal ofte findes sd. Derfor skal der tages sqrt af resultatet.
 
-##Pvalue
+## P-value (pvalue)
 
 ![P value](billeder/PvalueBogen.png)
+
+## Margin of error
+
+Hvis der er givet en proportion (p) og en margin of error (ME). Kan n udregnes ved:
+
+![Margin of error](billeder/margin_of_error.png)
+
+Hvis ikke dette kan bruges kan der søges efter "ME" (med store bogstaver) i formelsamlingen.
