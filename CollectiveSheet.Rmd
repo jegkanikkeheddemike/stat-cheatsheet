@@ -161,7 +161,7 @@ alpha <- 0.05
 # pHat
 pHat <- (SumOfSample)/SumOfAll
 
-pHat + c(-1,1) * qnorm(1-alpha/2) *sqrt(pHat*(1-pHat)/200)
+pHat + c(-1,1) * qnorm(1-alpha/2) *sqrt(pHat*(1-pHat)/SumOfAll)
 ```
 
 ![Confidence interval for the difference in proportion](billeder/DifferenceProportionsInterval.png)
@@ -433,7 +433,7 @@ OverallAverage+(TreatAverage-OverallAverage)+(GroupAverage-OverallAverage)
 
 ```
 
-Confidence interval, for the difference in mean valuw from group1 and group2 pre-planned 95% confidence interval
+Confidence interval, for the difference in mean value from group1 and group2 pre-planned 95% confidence interval
 
 ```{r}
 TotalNumberOfSamples <- 16
