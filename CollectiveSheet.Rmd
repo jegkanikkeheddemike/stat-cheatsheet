@@ -196,6 +196,18 @@ pHat1-pHat2 + c(-1,1) * SigmaHat *qnorm(1-alpha/2)
 
 ```
 
+Dette kan også gøres med en prop test i stedet
+
+```{r}
+success_1 <- 746
+n_1 <- 852
+
+success_2 <- 339
+n_2 <- 416
+prop.test(c(success_1,success_2),c(n_1,n_2),correct=FALSE)
+
+```
+
 ### Calculate P-value (pvalue) for Chi squared
 
 ```{r}
@@ -253,7 +265,7 @@ p2 <- 23/90   # 23 er success, 90 er total
 p1-p2 + c(-1,1) * sqrt(p1*(1-p1)/80+p2*(1-p2)/90)*qnorm(0.975)
 ```
 
-Use given numbers, indsæt egne tal vvvvvvvv
+Use given numbers, indsæt egne tal
 
 ```{r}
 alpha <- 0.05
