@@ -246,9 +246,9 @@ p2 <- 23/90   # 23 er success, 90 er total
 p1-p2 + c(-1,1) * sqrt(p1*(1-p1)/80+p2*(1-p2)/90)*qnorm(0.975)
 ```
 
-### test statistic
+### test statistic (Treatment)
 
-![Equal Proportion Example](billeder/EqualProportionExample.png) What is the usual test statistic for the test that the proportions of p1 and p2 are equal?
+![Equal Proportion Example](billeder/EqualProportionExample.png){width="368"} What is the usual test statistic for the test that the proportions of p1 and p2 are equal?
 
 ```{r}
 
@@ -271,6 +271,19 @@ p2 <- x2/n2
 2/51/sqrt((6/17)*(11/17)*(2/51))
 
 ```
+
+### test statistik (block)
+
+Givet et datasæt som dette. Udregn Z test værdien for forskellen mellem 2016 og 2019 ![Zobs block example](billeder/ZobsBlock.png)
+
+```{r}
+p1 <- (31+36)/189
+p2 <- c(31+30)/175
+p <- (31+36+31+30)/(189+175)
+(z <- (p1-p2)/sqrt(p*(1-p)*(1/189+1/175)))
+```
+
+Husk at denne z værdi er god at sammenligne med 1.96 (ved 0.05 alpha). Hvis z \> 1.96 afvises null.
 
 ## Chi Squared
 
@@ -416,6 +429,10 @@ t <- qt(1-alpha/2, df=n-k)
 
 mean_1 - mean_2 + c(-1,1) * t * sqrt(MSE * (1/n_1 + 1/n_2))
 ```
+
+### Standard deviation
+
+standard deviation er lig sqrt(residual_MeanSq)
 
 ## Two way Anova
 
@@ -1040,3 +1057,7 @@ v
 ### Coefficient of variation
 
 Definitionen på ciefficient of variation er sd/mean
+
+## Propogation of error
+
+Propogation of error er mega klamt od udregenses således: ![Progoation_of_error](billeder/propogation_of_error.png){width="417"}
