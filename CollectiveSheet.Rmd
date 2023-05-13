@@ -112,7 +112,6 @@ pHat <- (SumOfSample)/SumOfAll
 pHat + c(-1,1) * qnorm(1-alpha/2) *sqrt(pHat*(1-pHat)/200)
 ```
 
-
 ![Confidence interval for the difference in proportion](DifferenceProportionsInterval.png)
 
 ![Confidence Interval Of Difference Proportion Eksample](ConfidenceIntervalOfDifferenceProportionEksample.png)
@@ -137,9 +136,6 @@ SigmaHat <- sqrt(pHat1*(1-pHat1)/SumOfSample1+pHat2*(1-pHat2)/SumOfSample2)
 pHat1-pHat2 + c(-1,1) * SigmaHat *qnorm(1-alpha/2)
 
 ```
-
-
-
 
 ### Calculate P-value (pvalue) for Chi squared
 
@@ -293,20 +289,20 @@ chisq.test(scores, correct=FALSE)
 
 ```{r}
 #number of observations
-n <- 40
+n <- 24
 
 #number of treatments
-k <- 8
+k <- 4
 
 #treatment
 #sum of squares 
-SSTr <- 111.5
+SSTr <- 2.286
 #Degrees of freedom
 dfTreat <- k-1
   
 #residuals  
 #sum of squares 
-SSE <- 88.4
+SSE <- 3.241
 #Degrees of freedom
 dfResidual <- n-k
   
@@ -356,12 +352,15 @@ Der bliver antaget her at MSE kendes. Se ovenover hvordan det udregenes.
 n <- 24
 k <- 4
 mean_1 <- -0.6816667
-n_1 <- 6 # vil ofte bare være n / k
+n_1 <- n/k # vil ofte bare være n / k
 mean_2 <- -0.5416667
-n_2 <- 6 # vil ofte bare være n / k
-MSE <- 0.16205
+n_2 <- n/k # vil ofte bare være n / k
+MSE <- 0.16207
 
-t <- qt(0.975, df=n-k)
+
+alpha <- 0.05
+
+t <- qt(1-alpha/2, df=n-k)
 
 mean_1 - mean_2 + c(-1,1) * t * sqrt(MSE * (1/n_1 + 1/n_2))
 ```
