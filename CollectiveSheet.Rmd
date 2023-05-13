@@ -10,10 +10,12 @@ En null hypotese kan konkluderes afvist hvis en eller flere af nedst√•ende tilg√
 
 ## Binominal:
 
+Getting x successes when pulling from n
+
 ```{r}
-numberOfItems <- 35
-success <- 4
-prob <- 4/35
+numberOfItems <- 10
+success <- 1
+prob <- 0.2
 
 #Calculate the probability of x sucsess, when pulling n numberOfItems
 #where the probability of sucsess is prob.
@@ -24,15 +26,28 @@ prob <- 4/35
 pbinom(success,numberOfItems,prob)
 ```
 
+Getting **at least** x successes when pulling from n
+
+```{r}
+# getting at least x successes, when pulling from n
+# with probablility of success = prob
+
+numberOfItems <- 10
+success <- 2
+prob <- 0.2
+
+1 - pbinom(success - 1 ,numberOfItems,prob)
+```
+
 ## Hyper
 
 Probability
 
 ```{r}
-Type1Drawn <- 8
-Type1All <- 8
+Type1Drawn <- 3
+Type1All <- 3
 Type2All <- 2
-AllDrawn <- 8
+AllDrawn <- 3
 
 #The probability of having drawn x Type1Drawn, in a draw of n AllDrawn.
 #Where there are x of Type1All and x of Type2All to choose from.
