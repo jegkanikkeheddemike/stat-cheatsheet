@@ -435,6 +435,16 @@ k <- 1000
 data <- replicate(k,rexp(n,rate = 1/mean))
 medians <- apply(data,2,median)
 mean(medians)
+
+
+
+#her er den bedre måde
+?qexp
+#quantile (median = 0.5)
+quan <- 0.5
+mean <- 2.7017
+
+qexp(quan,1/mean)
 ```
 
 ## Simulation af sandsynlighed
