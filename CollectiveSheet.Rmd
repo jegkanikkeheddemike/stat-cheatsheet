@@ -86,23 +86,66 @@ Expected number of x in sample y, under null hyp (no change)
 
 ```{r}
 SumOfX <- 80
-SumOfSample <- 2088
+SumOfSample <- 63
 
-SumOfAll <- 12129
+SumOfAll <- 200
 
 
 # expected 
 (SumOfX*SumOfSample)/SumOfAll
 
+```
 
+![Proportion data](ProportionData.png) Using the data above calculate; Confidence interval for proportion
+
+```{r}
+#confidence interval for a proportion (or a chunk of proportions)
+#Given
+SumOfSample <- 84 + 63
+SumOfAll <- 200
+
+alpha <- 0.05
+
+# pHat
+pHat <- (SumOfSample)/SumOfAll
+
+pHat + c(-1,1) * qnorm(1-alpha/2) *sqrt(pHat*(1-pHat)/200)
+```
+
+![Confidence interval for the difference in proportion](DifferenceProportionsInterval.png)
+
+![Confidence Interval Of Difference Proportion Eksample](ConfidenceIntervalOfDifferenceProportionEksample.png)
+
+```{r}
+
+alpha <- 0.05
+
+#pHat 1
+SumOfX1 <- 35
+SumOfSample1 <- 80
+pHat1 <- (SumOfX1)/SumOfSample1
+
+#pHat 2
+SumOfX2 <-23
+SumOfSample2 <- 90
+pHat2 <- (SumOfX2)/SumOfSample2
+
+#Estimate of the difference
+SigmaHat <- sqrt(pHat1*(1-pHat1)/SumOfSample1+pHat2*(1-pHat2)/SumOfSample2)
+
+pHat1-pHat2 + c(-1,1) * SigmaHat *qnorm(1-alpha/2)
 
 ```
 
 ### Calculate P-value (pvalue) for Chi squared
 
 ```{r}
-tobs <- 132.3
-degreeFreedom <- 6
+tobs <- 10.985
+#Number of columns
+numCol <- 3
+#Number of Rows
+numRow <- 3
+degreeFreedom <- (numCol-1)*(numRow-1)
 
 
 #p value
@@ -234,6 +277,8 @@ rownames(scores) <- c("Poor","Medium","Good")
 scores
 
 chisq.test(scores, correct=FALSE)
+
+
 ```
 
 ## One way Anova
@@ -244,20 +289,20 @@ chisq.test(scores, correct=FALSE)
 
 ```{r}
 #number of observations
-n <- 40
+n <- 24
 
 #number of treatments
-k <- 8
+k <- 4
 
 #treatment
 #sum of squares 
-SSTr <- 111.5
+SSTr <- 2.286
 #Degrees of freedom
 dfTreat <- k-1
   
 #residuals  
 #sum of squares 
-SSE <- 88.4
+SSE <- 3.241
 #Degrees of freedom
 dfResidual <- n-k
   
@@ -307,17 +352,20 @@ Der bliver antaget her at MSE kendes. Se ovenover hvordan det udregenes.
 n <- 24
 k <- 4
 mean_1 <- -0.6816667
-n_1 <- 6 # vil ofte bare være n / k
+n_1 <- n/k # vil ofte bare være n / k
 mean_2 <- -0.5416667
-n_2 <- 6 # vil ofte bare være n / k
-MSE <- 0.16205
+n_2 <- n/k # vil ofte bare være n / k
+MSE <- 0.16207
 
-t <- qt(0.975, df=n-k)
+
+alpha <- 0.05
+
+t <- qt(1-alpha/2, df=n-k)
 
 mean_1 - mean_2 + c(-1,1) * t * sqrt(MSE * (1/n_1 + 1/n_2))
 ```
 
-##  Two way Anova
+## Two way Anova
 
 Find the expected value of group1 at treat n
 
@@ -405,6 +453,16 @@ k <- 1000
 data <- replicate(k,rexp(n,rate = 1/mean))
 medians <- apply(data,2,median)
 mean(medians)
+
+
+
+#her er den bedre måde
+?qexp
+#quantile (median = 0.5)
+quan <- 0.5
+mean <- 2.7017
+
+qexp(quan,1/mean)
 ```
 
 ## Simulation af sandsynlighed
@@ -725,6 +783,7 @@ x <- c(10.5, 9.3, 10.7, 10.8, 11.2)
 y <- c(8.9, 9.5, 10.2, 9.8, 10.3)
 
 t.test(x,y)
+t.test(x, y, paired = TRUE, conf.level = 0.95)
 #find: t = ...
 ```
 
@@ -855,6 +914,28 @@ Her tages der 80% kvantil
 ### Inter quantile range
 
 Inter quantile range defineres som Q3 - Q1
+
+## Welch T.test
+
+v degrees of freedom
+
+```{r}
+#v degrees of freedom
+
+n1 <- 50
+n2 <- 50
+
+s1 <- 467.9
+s2 <- 409
+
+b1 <- s1^2/n1
+b2 <- s2^2/n2
+
+v <- (b1+b2)^2/((b1)^2/(n1-1)+(b2)^2/(n2-1))
+
+v
+
+```
 
 ## Variation
 
