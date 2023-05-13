@@ -119,7 +119,7 @@ dhyper(wantedSuccsess, successes , fails, drawn)
 
 Often uses Chi Squared for hyp-test\
 But might also use Zobs\
-![Z](Zobs.png) Often uses Chi Squared for hyp-test.
+![Z](billeder/Zobs.png){width="441"} Often uses Chi Squared for hyp-test.
 
 Hvis der skal sammenliges to værdier bruges prop.test:
 
