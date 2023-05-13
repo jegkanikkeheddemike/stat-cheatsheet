@@ -975,3 +975,7 @@ v
 ### Coefficient of variation
 
 Definitionen på ciefficient of variation er sd/mean
+
+## Propogation of error
+
+Propogation of error er mega klamt od udregenses således: ![Progoation_of_error](billeder/propogation_of_error.png){width="417"}
