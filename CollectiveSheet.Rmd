@@ -10,10 +10,12 @@ En null hypotese kan konkluderes afvist hvis en eller flere af nedstående tilg�
 
 ## Binominal:
 
+Getting x successes when pulling from n
+
 ```{r}
-numberOfItems <- 35
-success <- 4
-prob <- 4/35
+numberOfItems <- 10
+success <- 1
+prob <- 0.2
 
 #Calculate the probability of x sucsess, when pulling n numberOfItems
 #where the probability of sucsess is prob.
@@ -24,15 +26,28 @@ prob <- 4/35
 pbinom(success,numberOfItems,prob)
 ```
 
+Getting **at least** x successes when pulling from n
+
+```{r}
+# getting at least x successes, when pulling from n
+# with probablility of success = prob
+
+numberOfItems <- 10
+success <- 2
+prob <- 0.2
+
+1 - pbinom(success - 1 ,numberOfItems,prob)
+```
+
 ## Hyper
 
 Probability
 
 ```{r}
-Type1Drawn <- 1
-Type1All <- 2
+Type1Drawn <- 3
+Type1All <- 3
 Type2All <- 2
-AllDrawn <- 2
+AllDrawn <- 3
 
 #The probability of having drawn x Type1Drawn, in a draw of n AllDrawn.
 #Where there are x of Type1All and x of Type2All to choose from.
@@ -52,6 +67,28 @@ p <- 0.8
 #variance
 n*p*(1-p)
 
+```
+
+**Example**
+
+In a game of drawing marbles out of a bag, there are 10 marbles\
+8 of them are green and will mean success; successes \<- 8\
+2 of them are red and will mean fail; fails \<- 2
+
+In total you draw 8 times without putting the marbles back in the bag (no replacement)\
+drawn \<- 8\
+You want to have 8 successes; wanted Successes = 8
+
+What is the probability of this scenario playing out:
+
+```{r}
+successes  <- 8
+fails <- 2
+
+wantedSuccesses  <- 8
+drawn <- 8
+
+dhyper(wantedSuccsess, successes , fails, drawn)
 ```
 
 ## Poisson
@@ -854,6 +891,19 @@ power.t.test(delta=1,sd = sqrt(VarPooled),sig.level = 0.01,power=0.99)
 ```
 
 One sample
+
+Number of samples n ![Formula for n](billeder/OneSampleSampleSize.png)
+
+```{r}
+power <- 0.8
+sd <- 1.5
+meanDif <- 0.3
+alpha <- 0.05
+
+#number of needed samples (n)
+(sd*(qnorm(1-alpha/2)+qnorm(power))/meanDif)^2
+
+```
 
 GIvet en power, afvigelse fra mean, sd og signifikantniveau kan den nødvendige n findes ved:
 
