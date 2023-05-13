@@ -60,7 +60,7 @@ n*p*(1-p)
 
 Often uses Chi Squared for hyp-test\
 But might also use Zobs\
-![Z](Zobs.png) Often uses Chi Squared for hyp-test.
+![Z](billeder/Zobs.png) Often uses Chi Squared for hyp-test.
 
 Hvis der skal sammenliges to værdier bruges prop.test:
 
@@ -96,7 +96,7 @@ SumOfAll <- 200
 
 ```
 
-![Proportion data](ProportionData.png) Using the data above calculate; Confidence interval for proportion
+![Proportion data](billeder/ProportionData.png) Using the data above calculate; Confidence interval for proportion
 
 ```{r}
 #confidence interval for a proportion (or a chunk of proportions)
@@ -112,9 +112,9 @@ pHat <- (SumOfSample)/SumOfAll
 pHat + c(-1,1) * qnorm(1-alpha/2) *sqrt(pHat*(1-pHat)/200)
 ```
 
-![Confidence interval for the difference in proportion](DifferenceProportionsInterval.png)
+![Confidence interval for the difference in proportion](billeder/DifferenceProportionsInterval.png)
 
-![Confidence Interval Of Difference Proportion Eksample](ConfidenceIntervalOfDifferenceProportionEksample.png)
+![Confidence Interval Of Difference Proportion Eksample](billeder/ConfidenceIntervalOfDifferenceProportionEksample.png)
 
 ```{r}
 
@@ -153,7 +153,7 @@ degreeFreedom <- (numCol-1)*(numRow-1)
 
 ```
 
-![Proportion Confidence interval](PropConf.png){width="398"}
+![Proportion Confidence interval](billeder/PropConf.png){width="398"}
 
 ### Confidence interval (plus 2 method)
 
@@ -186,7 +186,7 @@ p2+ c(-1,1)* z * sqrt((p2*(1-p2))/n_total2)
 
 ### Confidens interval mellem to værdier
 
-Hvis der er givet to forskellige værdier og man skal finde confidensintervallet mellem forskellen på dem gøres det således: ![prop CI example](prop_CI.png)
+Hvis der er givet to forskellige værdier og man skal finde confidensintervallet mellem forskellen på dem gøres det således: ![prop CI example](billeder/prop_CI.png)
 
 ```{r}
 p1 <- 35/80   # 35 er success, 80 er total
@@ -196,7 +196,7 @@ p1-p2 + c(-1,1) * sqrt(p1*(1-p1)/80+p2*(1-p2)/90)*qnorm(0.975)
 
 ### test statistic
 
-![Equal Proportion Example](EqualProportionExample.png) What is the usual test statistic for the test that the proportions of p1 and p2 are equal?
+![Equal Proportion Example](billeder/EqualProportionExample.png) What is the usual test statistic for the test that the proportions of p1 and p2 are equal?
 
 ```{r}
 
@@ -262,7 +262,7 @@ chisq.test(M)
 
 #### Indlæsning af datasæt
 
-![Chisq test. aka X\^2 test.](chisq-data.png){alt="Chisq test. aka X^2 test."}
+![Chisq test. aka X\^2 test.](billeder/chisq-data.png){alt="Chisq test. aka X^2 test."}
 
 Givet et datasæt som i billeded kan dataen indlæses således
 
@@ -285,7 +285,7 @@ chisq.test(scores, correct=FALSE)
 
 ### Fobs for one-way anova
 
-![One way anova Fobs](Fobs-oneWay-Anova.png)
+![One way anova Fobs](billeder/Fobs-oneWay-Anova.png)
 
 ```{r}
 #number of observations
@@ -344,7 +344,7 @@ mean_b - mean(c(mean_a,mean_b,mean_c,mean_d))
 
 ### Post hoc pairwise confidens (difference in means)
 
-Givet to grupper, hvad er confidensintervallet mellem deres forskel? Det udregnes som: ![post_hoc_diff_means](post_hoc_diff_means.png)
+Givet to grupper, hvad er confidensintervallet mellem deres forskel? Det udregnes som: ![post_hoc_diff_means](billeder/post_hoc_diff_means.png)
 
 Der bliver antaget her at MSE kendes. Se ovenover hvordan det udregenes.
 
@@ -422,6 +422,7 @@ anova(lm(clo ~temp,data=tab))
 ```
 
 #### calculate p-value
+
 ```{r}
 k <- 7; l <- 4; n <- 28; # Number of treatments k, number of partisipantc(Block) l, total number of observations n
 
@@ -452,8 +453,6 @@ print("p-value")
 1 - pf(Fobs,df1,df2)
 
 ```
-
-
 
 ### Find DF
 
@@ -549,7 +548,7 @@ Hvor der i eksemplet bliver brugt alpha=0.05.
 
 ## Normal distribution
 
-![Formula for Normal Distribution](NormalDist.png)
+![Formula for Normal Distribution](bilelder/NormalDist.png)
 
 Calculate standard deviation
 
@@ -626,7 +625,7 @@ df <- n -1
 
 ## Confidence interval
 
-![Confidence interval for mean](OneSampleConf.png)
+![Confidence interval for mean](billeder/OneSampleConf.png)
 
 ```{r}
 #One sample confidence interval mean
@@ -642,7 +641,7 @@ mean + c(-1,1)*qt((1-alpha/2),df = df ) * sd/sqrt(n)
 
 ```
 
-![Confidence interval for Variance and standard deviation](ConfVarSd.png) !!!!!!!! ADVARSEL VED IKKE OM DET VIRKER !!!!!!!!!!
+![Confidence interval for Variance and standard deviation](billeder/ConfVarSd.png) !!!!!!!! ADVARSEL VED IKKE OM DET VIRKER !!!!!!!!!!
 
 ```{r}
 #sample size
