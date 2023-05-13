@@ -892,6 +892,19 @@ power.t.test(delta=1,sd = sqrt(VarPooled),sig.level = 0.01,power=0.99)
 
 One sample
 
+Number of samples n ![Formula for n](billeder/OneSampleSampleSize.png)
+
+```{r}
+power <- 0.8
+sd <- 1.5
+meanDif <- 0.3
+alpha <- 0.05
+
+#number of needed samples (n)
+(sd*(qnorm(1-alpha/2)+qnorm(power))/meanDif)^2
+
+```
+
 GIvet en power, afvigelse fra mean, sd og signifikantniveau kan den nødvendige n findes ved:
 
 ```{r}
