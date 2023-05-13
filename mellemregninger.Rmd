@@ -1,7 +1,3 @@
-
-
-
-
 ```{r}
 #Given mean and sd
 
@@ -41,11 +37,6 @@ x <- 140
 
 ```
 
-
-
-
-
-
 ```{r}
 data <- c(74.7,
 74.2,
@@ -78,6 +69,7 @@ mean <- 74.29
 mean + c(-1,1)*qnorm 
 
 ```
+
 ```{r}
 
 x1 <- c(74.7, 74.2, 74.1, 69.6, 75.4, 76.3, 76.7, 75.6, 72.0, 74.3)
@@ -87,8 +79,6 @@ t.test(x2, x1,conf.level=0.99)
 ?t.test
 
 ```
-
-
 
 ```{r}
 
@@ -132,12 +122,7 @@ Sxx
  t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/ sxx))
 ```
 
-
-
-
-MS(Tr) = SS(Tr)/k−1
-Fobs = MS(Tr)/MSE
-
+MS(Tr) = SS(Tr)/k−1 Fobs = MS(Tr)/MSE
 
 ```{r}
 k <- 8
@@ -182,7 +167,6 @@ MSE <- SSE / degreeFreedom
 
 ```
 
-
 Proporstions
 
 ```{r}
@@ -191,7 +175,6 @@ Proporstions
 
 
 ```
-
 
 ```{r}
 ## The data table
@@ -232,10 +215,6 @@ prop.test(tbl,correct=FALSE)
 ?prop.test
 ```
 
-
-
-
-
 ```{r}
 df <- 5
 2*pchisq(qnorm(0.975),df=df)
@@ -248,10 +227,7 @@ qnorm(0.95)
 1 - pchisq(qnorm(0.95),df=1)
 ```
 
-
-
-(31/35)^7
-
+(31/35)\^7
 
 ```{r}
 ## Number of simulations
@@ -273,10 +249,6 @@ simmediandifs <- apply(simxsamples,2,median) - apply(simysamples,2,median)
 
 ```
 
-
-
-
-
 ```{r}
 
 ?power.t.test
@@ -286,10 +258,7 @@ power.t.test(delta=40, sd = 10,sig.level = 0.05, power=0.99)
 
 ```
 
-sqrt(7.539566)
-sxx <- (1078-1) *  7.930949
-sxx
-
+sqrt(7.539566) sxx \<- (1078-1) \* 7.930949 sxx
 
 ```{r}
 x <- c(-1.63, -1.37, -1.21, -0.60, -0.36, -0.26, -0.18, 0.02, 0.29, 0.39)
@@ -298,8 +267,6 @@ var(x)
 quantile(x,0.25,type=2)
 sort(x)
 ```
-
-
 
 ```{r}
 #Given n number of samples
@@ -347,17 +314,9 @@ mean + c(-1,1)* qt(1-alpha/2,df=df) * sd/sqrt(n)
 
 qt(1-alpha/2,)
 
-(1-(pt(0.857,49)))*2
-
-
-
-
-
-
+(1-(pt(0.857,49)))\*2
 
 Welch t.test
-
-
 
 ```{r}
 #v degrees of freedom
@@ -379,8 +338,6 @@ v
 
 
 ```
-
-
 
 ```{r}
 scores <- matrix(c(
@@ -406,16 +363,3 @@ pHat <- (SumOfSample)/SumOfAll
 
 pHat + c(-1,1) * qnorm(1-alpha/2) *sqrt(pHat*(1-pHat)/200)
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
