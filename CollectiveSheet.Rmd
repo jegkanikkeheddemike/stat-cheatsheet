@@ -85,8 +85,8 @@ prop.test(60, 114, p=0.5, correct=FALSE)
 Expected number of x in sample y, under null hyp (no change)
 
 ```{r}
-SumOfX <- 30
-SumOfSample <- 53
+SumOfX <- 80
+SumOfSample <- 63
 
 SumOfAll <- 200
 
@@ -101,7 +101,7 @@ SumOfAll <- 200
 ```{r}
 #confidence interval for a proportion (or a chunk of proportions)
 #Given
-SumOfSample <- 84+63
+SumOfSample <- 84 + 63
 SumOfAll <- 200
 
 alpha <- 0.05
@@ -112,11 +112,44 @@ pHat <- (SumOfSample)/SumOfAll
 pHat + c(-1,1) * qnorm(1-alpha/2) *sqrt(pHat*(1-pHat)/200)
 ```
 
+
+![Confidence interval for the difference in proportion](DifferenceProportionsInterval.png)
+
+![Confidence Interval Of Difference Proportion Eksample](ConfidenceIntervalOfDifferenceProportionEksample.png)
+
+```{r}
+
+alpha <- 0.05
+
+#pHat 1
+SumOfX1 <- 35
+SumOfSample1 <- 80
+pHat1 <- (SumOfX1)/SumOfSample1
+
+#pHat 2
+SumOfX2 <-23
+SumOfSample2 <- 90
+pHat2 <- (SumOfX2)/SumOfSample2
+
+#Estimate of the difference
+SigmaHat <- sqrt(pHat1*(1-pHat1)/SumOfSample1+pHat2*(1-pHat2)/SumOfSample2)
+
+pHat1-pHat2 + c(-1,1) * SigmaHat *qnorm(1-alpha/2)
+
+```
+
+
+
+
 ### Calculate P-value (pvalue) for Chi squared
 
 ```{r}
-tobs <- 132.3
-degreeFreedom <- 6
+tobs <- 10.985
+#Number of columns
+numCol <- 3
+#Number of Rows
+numRow <- 3
+degreeFreedom <- (numCol-1)*(numRow-1)
 
 
 #p value
