@@ -29,10 +29,10 @@ pbinom(success,numberOfItems,prob)
 Probability
 
 ```{r}
-Type1Drawn <- 1
-Type1All <- 2
+Type1Drawn <- 8
+Type1All <- 8
 Type2All <- 2
-AllDrawn <- 2
+AllDrawn <- 8
 
 #The probability of having drawn x Type1Drawn, in a draw of n AllDrawn.
 #Where there are x of Type1All and x of Type2All to choose from.
@@ -52,6 +52,28 @@ p <- 0.8
 #variance
 n*p*(1-p)
 
+```
+
+**Example**
+
+In a game of drawing marbles out of a bag, there are 10 marbles\
+8 of them are green and will mean success; successes \<- 8\
+2 of them are red and will mean fail; fails \<- 2
+
+In total you draw 8 times without putting the marbles back in the bag (no replacement)\
+drawn \<- 8\
+You want to have 8 successes; wanted Successes = 8
+
+What is the probability of this scenario playing out:
+
+```{r}
+successes  <- 8
+fails <- 2
+
+wantedSuccesses  <- 8
+drawn <- 8
+
+dhyper(wantedSuccsess, successes , fails, drawn)
 ```
 
 ## Poisson
@@ -422,6 +444,7 @@ anova(lm(clo ~temp,data=tab))
 ```
 
 #### calculate p-value
+
 ```{r}
 k <- 7; l <- 4; n <- 28; # Number of treatments k, number of partisipantc(Block) l, total number of observations n
 
@@ -452,8 +475,6 @@ print("p-value")
 1 - pf(Fobs,df1,df2)
 
 ```
-
-
 
 ### Find DF
 
