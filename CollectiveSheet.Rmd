@@ -421,6 +421,40 @@ anova(lm(clo ~temp,data=tab))
 
 ```
 
+#### calculate p-value
+```{r}
+k <- 7; l <- 4; n <- 28; # Number of treatments k, number of partisipantc(Block) l, total number of observations n
+
+SSTr <- 0.24902
+SSE <-  0.32866
+
+MSTr <-  0.041504
+MSE <-   0.018259
+
+
+df1 <- k - 1
+print("Degree of freedom Treatmeant:")
+df1
+
+df2 <- (l-1)*(k-1)
+print("Degree of freedom Risidual:")
+df2
+
+
+#Fobs 
+Fobs <- (MSTr / MSE)
+print("Fobs")
+Fobs
+
+
+#p-value
+print("p-value")
+1 - pf(Fobs,df1,df2)
+
+```
+
+
+
 ### Find DF
 
 Dette forhold gælder for degress of freedom i et two way anova.
@@ -841,7 +875,7 @@ En type 2 error er at acceptere null mens null er falsk.
 
 Det betyder at høj power lig lav sandsynlighed for at lave fejl. Større n giver også mere power.
 
-### Fobs
+### Fobs (one way)
 
 ```{r}
 k <- 8; n <- 0 # Number of treatments k, total number of observations n
