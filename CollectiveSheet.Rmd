@@ -458,7 +458,7 @@ anova(lm(clo ~temp,data=tab))
 
 ```
 
-#### calculate p-value
+#### calculate p-value two way anova
 
 ```{r}
 k <- 7; l <- 4; n <- 28; # Number of treatments k, number of partisipantc(Block) l, total number of observations n
@@ -971,7 +971,7 @@ t_alpha <- qt(0.95, df=n-2) #alpha = 0.9
 beta_0 + beta_1 * x_0 + c(-1,1) * t_alpha * res_err * sqrt(1+1/n + (x_0-mean(x)/ sxx))
 ```
 
-![Formula for Confidense and Prediction interval](ConfidenceAndPredictionInterval.png) I model Y = beta0 + beta1 \* x + residuals
+![Formula for Confidense and Prediction interval](billeder/ConfidenceAndPredictionInterval.png) I model Y = beta0 + beta1 \* x + residuals
 
 Her er Sxx = (n-1) \* var(Y)
 
